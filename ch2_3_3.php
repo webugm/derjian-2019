@@ -7,6 +7,6 @@
   <title>在html中嵌入php語法</title>
 </head>
 <body>
-  <?php include "ch1_3_include.php"; ?>  
+  <?php include "ch2_3_3_include.php"; ?>  
 </body>
 </html>
