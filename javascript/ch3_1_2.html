@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>操作DOM屬性</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/ch1_3_2.css">
+</head>
+<body>
+    <div id="app">
+        <h1>德鍵職訓中心</h1>
+        <a id="Btn" href="javascript:;"> > 馬上觀看最新課程</a>
+    </div>
+
+    <script>
+      var Btn = document.getElementById("Btn");
+      Btn.addEventListener("click",hello);
+
+      function hello(){
+        Btn.href="https://www.ugm.com.tw";
+        Btn.target = "_blank";
+      }
+
+        
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>巢狀選擇判斷式</title>
+    <script>
+        function fnClick() {
+            //取得txtScore欄位的值並指定給score成績變數
+            var score = document.getElementById("txtScore").value;
+            //取得show<p>標籤元素並指定給show變數
+            var show = document.getElementById("show");
+            var msg;
+            //判斷score是否介於1~100之間
+            if (score >= 0 && score <= 100) {
+                //判斷score是否大於等於60
+                if (score >= 60) {
+                    msg = "成績及格";
+                } else {
+                    msg = "成績不及格";
+                }
+            } else {
+                msg = "成績應介於0~100之間";
+            }
+            show.innerHTML = msg;   //將msg評語顯示在show指定的標籤中
+        }
+    </script>
+</head>
+<body>
+    <p>成績：<input type="text" id="txtScore" /></p>
+    <p><input type="button" value="確定" onclick="fnClick()" /></p>
+    <p id="show"></p>
+</body>
+</html>
