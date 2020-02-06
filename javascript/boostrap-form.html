@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+
+    <title>離線版</title>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="bootstrap/jquery-3.4.1.min.js"></script>
+    <script src="bootstrap/popper.min.js"></script>
+    <script src="bootstrap/bootstrap.min.js"></script>
+  </head>
+  <body>    
+  
+    <form role="form" action="/modules/ugm_a_cart/prod.php" method="post" id="myForm" class="mb-20" enctype="multipart/form-data">
+      <div class="row">
+        <div class="col-sm-9">
+          <div class="row">         
+            <!--編號-->              
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>產品編號</label>
+                <input type="text" class="form-control" name="no" id="no" value="AKLP-4310-DIN-TSTA ">
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="title">產品名稱 <span>*</span></label>
+                <input type="text" class="form-control" name="title" id="title" value="Low PIM Adapter Kits for 4.3-10 to 7/16 DIN ">
+              </div>
+            </div>
+
+            <!--狀態-->
+            <div class="col-sm-2">
+              <div class="form-group">
+                <label style="display:block;">啟用</label>
+                <input type="radio" name="enable" id="enable_1" value="1" checked="">
+                <label for="enable_1" style="display:inline;">啟用</label>&nbsp;&nbsp;
+                <input type="radio" name="enable" id="enable_0" value="0">
+                <label for="enable_0" style="display:inline;">停用</label>
+              </div>
+            </div> 
+
+            <div class="col-sm-2">                 
+              <!--PDF 型錄-->  
+              <div class="form-group">
+                <label>PDF</label>              
+                <input type="file" name="prod_pdf[]" accept="application/pdf" class="form-control">
+              </div>  
+            </div>
+
+          </div>
+
+        
+        </div>
+        <div class="col-sm-3">
+          
+          <!--類別-->
+          <div class="form-group">
+            <label>類別</label>
+            <select name="kind_sn" class="form-control" size="1">
+              <option value="a1">選項1</option>
+              <option value="b2">選項2</option>
+            </select>
+          </div>
+                      
+        </div>
+      </div>  
+      
+      <!-- 規格 -->
+      <div class="row">
+        <div class="col-sm-12">         
+          <!-- 摘要 -->
+          <div class="form-group">
+            <label class="control-label">摘要</label>
+            <textarea class="form-control" rows="4" id="summary" name="summary"></textarea>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="text-center pb-20">
+        <input type="hidden" name="op" value="">
+        <button type="submit" class="btn btn-primary">送出</button>
+      </div>
+
+    </form>
+  </body>
+</html>
