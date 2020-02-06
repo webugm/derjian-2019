@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-04 23:28:37
+/* Smarty version 3.1.34-dev-7, created on 2020-02-05 17:25:53
   from 'D:\0_course\xampp\xampp\htdocs\web11\templates\theme.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e39f015c98c49_13740960',
+  'unifunc' => 'content_5e3aec91d8cd13_73355015',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '627b7b9a3b5d134e4d065b384c224a3e0495ff03' => 
     array (
       0 => 'D:\\0_course\\xampp\\xampp\\htdocs\\web11\\templates\\theme.tpl',
-      1 => 1580855296,
+      1 => 1580891450,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e39f015c98c49_13740960 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e3aec91d8cd13_73355015 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -75,18 +75,20 @@ css/creative.min.css" rel="stylesheet">
             <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
           </li>
 
-          <?php if ($_SESSION['admin']) {?>            
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="user.php?op=logout">登出</a>
-            </li>           
-            <li class="nav-item">
+          <?php if ($_SESSION['admin']) {?>
+                        <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="user.php">管理員</a>
             </li>
-          <?php } else { ?>           
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="user.php?op=op_form">登入</a>
+              <a class="nav-link js-scroll-trigger" href="user.php?op=logout">登出</a>
             </li>
+          <?php } else { ?>
+                        <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="user.php">登入</a>
+            </li>
+            
           <?php }?>
+
         </ul>
       </div>
     </div>

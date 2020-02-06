@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <form role="form" action="/modules/ugm_a_cart/prod.php" method="post" id="myForm" class="mb-20" enctype="multipart/form-data" novalidate="novalidate">
+    <div class="row">
+      <div class="col-sm-9">
+        <div class="row">         
+          <!--編號-->              
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label>產品編號</label>
+              <input type="text" class="form-control" name="no" id="no" value="AKLP-4310-DIN-TSTA ">
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="title">產品名稱 <span>*</span></label>
+              <input type="text" class="form-control" name="title" id="title" value="Low PIM Adapter Kits for 4.3-10 to 7/16 DIN ">
+            </div>
+          </div>
+
+          <!--youtube-->              
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label>YOUTUBE</label>
+              <input type="text" class="youtube form-control" name="youtube" id="youtube" value="">
+            </div>
+          </div>
+
+          <!--sort-->              
+          <div class="col-sm-2">
+            <div class="form-group">
+              <label>排序</label>
+              <input type="text" class="sort form-control" name="sort" id="sort" value="56">
+            </div>
+          </div>
+
+          <!--狀態-->
+          <div class="col-sm-2">
+            <div class="form-group">
+              <label style="display:block;">啟用</label>
+              <input type="radio" name="enable" id="enable_1" value="1" checked="">
+              <label for="enable_1" style="display:inline;">啟用</label>&nbsp;&nbsp;
+              <input type="radio" name="enable" id="enable_0" value="0">
+              <label for="enable_0" style="display:inline;">停用</label>
+            </div>
+          </div> 
+
+          <!--日期-->
+          <div class="col-sm-3">
+            <div class="form-group">
+              <label>日期</label>
+              <input type="text" name="date" id="date" class="form-control" value="2019-12-20 17:15:01" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss' , startDate:'%y-%M-%d'})" autocomplete="off">
+            </div>
+          </div> 
+          <div class="col-sm-10">
+            <!--圖片-->  
+            <div class="form-group">
+              <label>圖片<span>(大小最好可以一致)</span></label>
+              
+    <input type="file" name="prod[]" multiple="multiple" accept="image/*" class="form-control"><br>
+				<div class="row sortable ui-sortable">
+					<div class="col-sm-2 ui-sortable-handle">
+										 <img src="https://www.5c-rf.com/uploads/ugm_a_cart/prod/thumbs/c073e_56_1.jpg" alt="" class="img-responsive img-fluid">
+										 <div>										
+											 <input type="checkbox" name="del_prod[767]" value="767" id="del_767">
+											 <label class="checkbox-inline" for="del_767">Delete</label>
+											 
+					<i class="fa fa-arrows" style="cursor: pointer;font-size: 1.2rem;" data-toggle="tooltip" title="" data-original-title="drop&amp;move"></i>
+					<input type="hidden" name="upload_file_sort[767]">				
+				
+										 </div>
+									 </div>
+				
+				</div>
+			
+    
+            </div>     
+          </div>
+          <div class="col-sm-2">                 
+            <!--PDF 型錄-->  
+            <div class="form-group">
+              <label>PDF</label>
+              
+    <input type="file" name="prod_pdf[]" accept="application/pdf" class="form-control"><br>
+				<div class="row sortable ui-sortable">
+					<div class="col-sm-12 ui-sortable-handle">
+										 <img src="https://www.5c-rf.com/modules/tadtools/multiple-file-upload/downloads.png" alt="" class="img-responsive img-fluid">
+										 <div>										
+											 <input type="checkbox" name="del_prod_pdf[769]" value="769" id="del_769">
+											 <label class="checkbox-inline" for="del_769">Delete</label>
+											 
+										 </div>
+									 </div>
+				
+				</div>
+			
+    
+            </div>  
+          </div>
+
+        </div>
+
+       
+      </div>
+      <div class="col-sm-3">
+        
+        <!--類別-->
+        <div class="form-group">
+          <label>類別<span>(必選、可複選)</span></label>
+          <select name="kind_sn[]" class="kind_sn form-control" size="7" multiple="">
+            <option value="19">HSD (Automotive Connector-IP67)</option>
+<option value="177">&nbsp;&nbsp;&nbsp;&nbsp;HSD Series ( IP67 Waterproof) </option>
+<option value="187">&nbsp;&nbsp;&nbsp;&nbsp;HSD PCB Mount ( IP67 Waterproof) </option>
+<option value="186">&nbsp;&nbsp;&nbsp;&nbsp;HSD Adapter ( IP67 Waterproof) </option>
+<option value="34">FAKRA SMB(Automotive Connector)</option>
+<option value="92">&nbsp;&nbsp;&nbsp;&nbsp;FAKRA Crimp Cable Type </option>
+<option value="93">&nbsp;&nbsp;&nbsp;&nbsp;FAKRA PCB type </option>
+<option value="94">&nbsp;&nbsp;&nbsp;&nbsp;FAKRA Rotary Housing Type</option>
+<option value="96">&nbsp;&nbsp;&nbsp;&nbsp;FAKRA Adapter </option>
+<option value="2">4.3-10 Low PIM Product</option>
+<option value="13" selected="">&nbsp;&nbsp;&nbsp;&nbsp;Low PIM Adapter Kits</option>
+<option value="9">&nbsp;&nbsp;&nbsp;&nbsp;4.3-10 Adapters</option>
+<option value="10">&nbsp;&nbsp;&nbsp;&nbsp;7/16 DIN Adapter</option>
+<option value="65">&nbsp;&nbsp;&nbsp;&nbsp;SMA Adapter </option>
+<option value="14">&nbsp;&nbsp;&nbsp;&nbsp;Connector for .085 Cable </option>
+<option value="90">&nbsp;&nbsp;&nbsp;&nbsp;Connector for .141 Cable </option>
+<option value="66">&nbsp;&nbsp;&nbsp;&nbsp;Connector for .250 Cable </option>
+<option value="84">&nbsp;&nbsp;&nbsp;&nbsp;Low PIM Coax. Cable Assembly </option>
+<option value="77">&nbsp;&nbsp;&nbsp;&nbsp;Microwave/RF Test Assembly</option>
+<option value="26">1.85 mmWave Series </option>
+<option value="178">&nbsp;&nbsp;&nbsp;&nbsp;In Series Adapter  </option>
+<option value="179">&nbsp;&nbsp;&nbsp;&nbsp;In Between Series </option>
+<option value="70">2.4  mmWave Series </option>
+<option value="175">&nbsp;&nbsp;&nbsp;&nbsp;In Series Adapter </option>
+<option value="176">&nbsp;&nbsp;&nbsp;&nbsp;In Between Series</option>
+<option value="71">2.92 mmWave Series </option>
+<option value="173">&nbsp;&nbsp;&nbsp;&nbsp;In Series Adapter </option>
+<option value="174">&nbsp;&nbsp;&nbsp;&nbsp;In Between Series </option>
+<option value="76">3.5mm Wave Series</option>
+<option value="180">&nbsp;&nbsp;&nbsp;&nbsp;In Series Adapter </option>
+<option value="181">&nbsp;&nbsp;&nbsp;&nbsp;In Between Series</option>
+<option value="32">SMP Series</option>
+<option value="182">&nbsp;&nbsp;&nbsp;&nbsp;SMP Series  </option>
+<option value="97">4.1 / 9.5 Low PIM Adapter</option>
+<option value="184">&nbsp;&nbsp;&nbsp;&nbsp;4.1 / 9.5 Low PIM Adapter</option>
+<option value="35">Lightning Surge Arrester </option>
+<option value="183">&nbsp;&nbsp;&nbsp;&nbsp;Lightning Surge Arrester </option>
+<option value="67">RF Coax. Cable Assembly </option>
+<option value="105">7/16 Series</option>
+<option value="106">&nbsp;&nbsp;&nbsp;&nbsp;Flexible Cable- Clamp_Crimp Type</option>
+<option value="107">&nbsp;&nbsp;&nbsp;&nbsp;Panel _ Bulkhead Receptacle</option>
+<option value="108">&nbsp;&nbsp;&nbsp;&nbsp;In/Between Adapter</option>
+<option value="103">1.0/2.3 Series</option>
+<option value="185">&nbsp;&nbsp;&nbsp;&nbsp;1.0/2.3 Series</option>
+<option value="104">1.6/5.6 Series</option>
+<option value="110">&nbsp;&nbsp;&nbsp;&nbsp;Flexible Cable- Clamp_ Crimp Type</option>
+<option value="111">&nbsp;&nbsp;&nbsp;&nbsp;PCB _ Bulkhead Receptacle</option>
+<option value="112">&nbsp;&nbsp;&nbsp;&nbsp;In Series Adapter</option>
+<option value="113">N Series</option>
+<option value="114">&nbsp;&nbsp;&nbsp;&nbsp;Flexible Cable -Clamp_Crimp Type</option>
+<option value="115">&nbsp;&nbsp;&nbsp;&nbsp;Panel _ Bulkhead Receptacle</option>
+<option value="116">&nbsp;&nbsp;&nbsp;&nbsp;In/Between Adapter </option>
+<option value="118">SMA Series</option>
+<option value="119">&nbsp;&nbsp;&nbsp;&nbsp;Flexible Cable-Clamp_Crimp_ Solder  </option>
+<option value="120">&nbsp;&nbsp;&nbsp;&nbsp;Panel _PCB_Bulkhead Receptacle</option>
+<option value="121">&nbsp;&nbsp;&nbsp;&nbsp;In/Between Adapter </option>
+<option value="123">SMB / SMC Series</option>
+<option value="125">&nbsp;&nbsp;&nbsp;&nbsp;Flexible Cable Crimp Type</option>
+<option value="126">&nbsp;&nbsp;&nbsp;&nbsp;PCB_Bulkhead Receptacle</option>
+<option value="124">&nbsp;&nbsp;&nbsp;&nbsp;In/Between Adapter    </option>
+<option value="128">MMCX Series</option>
+<option value="129">&nbsp;&nbsp;&nbsp;&nbsp;Flexible Cable Crimp Type</option>
+<option value="130">&nbsp;&nbsp;&nbsp;&nbsp;PCB _ Edgecard Receptacle</option>
+<option value="131">MCX Series</option>
+<option value="132">&nbsp;&nbsp;&nbsp;&nbsp;Flexible Cable- Crimp_ Solder Type</option>
+<option value="133">&nbsp;&nbsp;&nbsp;&nbsp;PCB Mount _ Adapter </option>
+<option value="140">TNC Series </option>
+<option value="141">&nbsp;&nbsp;&nbsp;&nbsp;Flexible Cable- Clamp_Crimp Type</option>
+<option value="142">&nbsp;&nbsp;&nbsp;&nbsp;Panel _ Bulkhead Receptacle</option>
+<option value="143">&nbsp;&nbsp;&nbsp;&nbsp;In/Between Adapter </option>
+<option value="144">BNC Series</option>
+<option value="145">&nbsp;&nbsp;&nbsp;&nbsp;Flexible Cable -Clamp_Crimp_Twist-On Type</option>
+<option value="146">&nbsp;&nbsp;&nbsp;&nbsp;Panel _PCB_Bulkhead Receptacle</option>
+<option value="147">&nbsp;&nbsp;&nbsp;&nbsp;In/Between Adapter </option>
+<option value="148">UHF Series </option>
+<option value="150">&nbsp;&nbsp;&nbsp;&nbsp;Flexible Cable -Clamp_Crimp_Twist-on</option>
+<option value="151">&nbsp;&nbsp;&nbsp;&nbsp;Panel _ Bulkhead Receptacle</option>
+<option value="168">&nbsp;&nbsp;&nbsp;&nbsp;Reducing Adapter </option>
+<option value="152">&nbsp;&nbsp;&nbsp;&nbsp;In/Between Adapter </option>
+<option value="149">Mini-UHF Series </option>
+<option value="153">&nbsp;&nbsp;&nbsp;&nbsp;Flexible Cable Crimp Type</option>
+<option value="154">&nbsp;&nbsp;&nbsp;&nbsp;Panel_Bulkhead Receptacle</option>
+<option value="155">&nbsp;&nbsp;&nbsp;&nbsp;In/Between Adapter </option>
+<option value="163">F Series </option>
+<option value="164">&nbsp;&nbsp;&nbsp;&nbsp;Flexible Cable -Clamp_Crimp_Twist-On</option>
+<option value="165">&nbsp;&nbsp;&nbsp;&nbsp;PCB _ Bulkhead Receptacle</option>
+<option value="166">&nbsp;&nbsp;&nbsp;&nbsp;In/Between Adapter</option>
+<option value="156">Reverse Polarity for SMA / TNC /BNC </option>
+<option value="157">&nbsp;&nbsp;&nbsp;&nbsp;Reverse Polarity for SMA  Series</option>
+<option value="159">&nbsp;&nbsp;&nbsp;&nbsp;Reverse Polarity for TNC Series</option>
+<option value="158">&nbsp;&nbsp;&nbsp;&nbsp;Reverse Polarity for BNC Series</option>
+<option value="63">Crimping Tool &amp; Stripper for Coaxial Cables</option>
+
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>產品說明</label>
+          <textarea class="form-control" rows="3" id="readme_prod_title" name=""></textarea>
+        </div>
+          
+        <!--產品說明-->
+        <div class="form-group">
+          <label>產品說明<span>(可複選)</span></label>
+          <select name="readme_prod_sn[]" class="readme_prod form-control" size="8" multiple="" onchange="get_readme_prod_sn();" id="readme_prod_sn">
+            <option value="8">Low PIM 4.3-10 Adapter </option>
+<option value="15">Low PIM 7/16 DIN Adapter</option>
+<option value="16">Low PIM SMA Adapter </option>
+<option value="79">Low PIM Connector for .141 &amp; .085 Cable </option>
+<option value="80">Low PIM Connector for .250 Cable </option>
+<option value="81">Low PIM with .141 Semi-rigid Cable Assembly</option>
+<option value="82">Low PIM with 1/2" Super Flexible Corrugated Cable Assembly  </option>
+<option value="83">Low PIM with 1/4" Super Flexible Corrugated Cable Assembly  </option>
+<option value="17">HSD SERIES - PATENT &amp; ELECTRICAL TEST</option>
+<option value="18">HSD for Automobile Adapter </option>
+<option value="20">4.1 / 9.5 (Low PIM Adapters)</option>
+<option value="47">HSD ADAPTER ( IP67 waterproof)</option>
+<option value="48">Connector for IP68 Waterproof</option>
+<option value="49">Adapter Kits ( High Frequency)</option>
+<option value="50">Adapter Kits</option>
+<option value="51">1.85mm Wave - INTERFACE</option>
+<option value="52">2.4 mm Wave - INTERFACE </option>
+<option value="53">2.92 mm Wave - INTERFACE</option>
+<option value="87">3.5mm Wave- INTERFACE</option>
+<option value="54">SMP Series</option>
+<option value="55">FAKRA SMB (Automotive Connector)</option>
+<option value="56">Lightning Arrester Product details</option>
+<option value="57">MMCX Series</option>
+<option value="58">MCX Series</option>
+<option value="59">RF COAXIAL CABLE ASSEMBLY</option>
+<option value="60">N - Interface &amp; Technical Characteristics</option>
+<option value="61">BNC Series</option>
+<option value="62">Reverse Polarity for SMA / TNC /BNC </option>
+<option value="64">4.3-10 Male to N Female</option>
+<option value="78">Microwave/RF Test Assemblies</option>
+<option value="86">Interface </option>
+<option value="91">FAKRA SMB II-Interface &amp; Spec.</option>
+<option value="98">4.1 / 9.5 (Low PIM Adapters BOX)</option>
+<option value="99">1.0/2.3 Interface &amp; Technical Characteristics</option>
+<option value="100">1.6/5.6 Interface &amp; Technical Characteristics</option>
+<option value="101">7/16 Interface &amp; Technical Characteristics</option>
+<option value="102">7/16 Product information</option>
+<option value="117">SMA - Interface &amp; Technical Characteristics</option>
+<option value="122">SMB/SMC-Interface &amp; Technical Characteristics</option>
+<option value="127">MMCX - Interface &amp; Technical Characteristics </option>
+<option value="134">MCX - Interface &amp; Technical Characteristics </option>
+<option value="138">SMP - Interface &amp; Technical Characteristics</option>
+<option value="139">TNC - Interface &amp; Technical Characteristics</option>
+<option value="160">BNC - Interface &amp; Technical Characteristics</option>
+<option value="161">Testing Report </option>
+<option value="162">F - Technical Characteristics</option>
+<option value="167">Mini-UHF - Technical Characteristics</option>
+<option value="169">UHF - Technical Characteristics</option>
+<option value="170">RP SMA - Interface &amp; Technical Characteristics</option>
+<option value="171">RP BNC - Interface &amp; Technical Characteristics</option>
+<option value="172">RP TNC- Interface &amp; Technical Characteristics</option>
+
+          </select>
+        </div>
+                    
+      </div>
+    </div>  
+    
+    <!-- 規格 -->
+
+    <div class="row">
+      <div class="col-sm-12">        
+        <table id="tbin" class="table table-striped table-bordered table-sm table-hover">
+          <thead class="thead-light">
+            <tr id="trHead">
+              <th>品名規格</th>
+              <th style="width:10%;">單位</th>
+              <th style="width:10%;" class="text-right">數量</th>
+              <th style="width:10%;" class="text-right">單價</th>
+              <th style="width:10%;" class="text-right">特價</th>
+              <th style="width:10%;" class="text-center">特價開始</th>
+              <th style="width:10%;" class="text-center">特價結束</th>
+              <th style="width:8%;" class="text-center">上架</th>
+              <th style="width:8%;" class="text-center">
+                <button type="button" class="btn btn-sm btn-success add" id="add">Add</button>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="sortable ui-sortable">
+                                        
+          </tbody>            
+          <tbody>
+            <!--第一行数据-->
+            <tr id="prod_1" class="prod_1" data-sn="" data-prod="">
+              <td>
+                <!--品名規格-->
+                <div class="form-group">
+                  <input type="text" name="standard_title[]" class="standard_title form-control" value="">
+                </div>
+              </td>
+              <td>
+                <!--單位-->
+                <div class="form-group">
+                  <input type="text" name="unit[]" class="unit form-control" value="">
+                </div>
+              </td>
+  
+              <td class="text-center">
+                <!--數量-->
+                <div class="form-group">
+                  <input type="text" name="amount[]" class="amount form-control text-right" value="">
+                </div>
+              </td>
+              <td class="text-center">
+                <!--單價-->
+                <div class="form-group">
+                  <input type="text" name="price[]" class="price form-control text-right" value="">
+                </div>
+              </td>
+              <td class="text-center">
+                <!--特價-->
+                <div class="form-group">
+                  <input type="text" name="sprice[]" class="sprice form-control text-right" value="">
+                </div>
+              </td>
+              <td class="text-center">
+                <!--特價開始日期-->
+                <div class="form-group">
+                  <input type="text" name="sprice_start_date[]" class="sprice_start_date form-control" value="" onclick="WdatePicker({dateFmt:'yyyy-MM-dd' , startDate:'%y-%M-%d'})" autocomplete="off">
+                </div>
+              </td>
+              <td class="text-center">
+                <!--特價結束日期-->
+                <div class="form-group">
+                  <input type="text" name="sprice_end_date[]" class="sprice_end_date form-control" value="" onclick="WdatePicker({dateFmt:'yyyy-MM-dd' , startDate:'%y-%M-%d'})" autocomplete="off">
+                </div>
+              </td>
+              <td class="text-center">
+                <!--上架狀態-->
+                <div class="form-group">
+                  <select name="standard_enable[]" class="enable form-control text-left">
+                    <option value="1">上架</option>
+                    <option value="" selected="">下架</option>
+                  </select>
+                </div>
+              </td>
+              <td class="text-center" style="vertical-align:middle;">
+                <i class="fa fa-trash btnDel" aria-hidden="true" style="cursor: pointer;font-size: 1.2rem;"></i>
+              </td>
+            </tr>
+            <!--第一行数据结束-->
+            <tr id="add_tr"></tr>
+          </tbody>
+        </table>
+         
+        <!-- 摘要 -->
+        <div class="form-group">
+          <label class="control-label">摘要</label>
+          <textarea class="form-control" rows="4" id="summary" name="summary">Low PIM Adapter Kits  available  4.3-10 N to N series adapters and 4.3-10  to 7/16 series adapters </textarea>
+        </div>
+                
+        <div class="form-group">
+          <label for="content">內容</label>
+          
+        <textarea name="content" id="editor_content" class="ckeditor_css" style="visibility: hidden; display: none;">&lt;p&gt;&lt;span style="color:#FF0000;"&gt;&lt;strong&gt;&lt;span style="font-size:20px;"&gt;Low PIM Adapter Kits available for&amp;nbsp;&amp;nbsp;4.3-10&amp;nbsp;to 7/16 DIN Series&lt;/span&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;div&gt;&lt;span style="font-size:18px;"&gt;&lt;/span&gt;&lt;/div&gt;
+
+&lt;div&gt;
+&lt;div&gt;&lt;span style="font-size:18px;"&gt;4.3-10 to 7/16 series adapters designed and manufactured with materials and processes to reduce intermodulation generation and offer excellent return loss and power handing performance.&lt;br /&gt;
+&amp;nbsp;&lt;br /&gt;
+Available in original DIN materials specifications of Silver plated machined brass body construction and precision grade ruggedized tri-metal (White Bronze) plated machined brass bodies and coupling nuts.&amp;nbsp;&lt;/span&gt;&lt;/div&gt;
+
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+
+&lt;div&gt;&lt;span style="font-size:18px;"&gt;The low passive intermodulation (PIM) adapter interconnects are perfect for applications requiring high performance at ultra low VSWR.&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;
+
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+
+&lt;div&gt;&lt;span style="font-size:18px;"&gt;The&amp;nbsp; low PIM adapters are ideal for portable passive intermodulation testing, portable sweep testing, and applications such as installations in cellular/PCS, RF wireless infrastructure, OEM in-rack RF routing, in-building systems, and land mobile radio.&amp;nbsp;&lt;/span&gt;&lt;/div&gt;
+
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;&lt;span style="color:#FF0000;"&gt;&lt;span style="font-size:18px;"&gt;&amp;nbsp;&lt;u&gt;Low PIM Adapter Product Features Include:&amp;nbsp;&lt;/u&gt;&lt;br /&gt;
+• Adapter low PIM levels of &amp;lt; -165 dBc&lt;br /&gt;
+• 7/16 DIN and&amp;nbsp; Type N&amp;nbsp;low PIM adapters available&lt;br /&gt;
+• Plated with tri-metal tri-metal (White Bronze)&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+
+&lt;div&gt;&lt;span style="font-size:18px;"&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;strong&gt;&lt;span style="color:#3333FF;"&gt;&lt;span style="font-family:arial,sans-serif;"&gt;&lt;span style="font-size:20.0pt;"&gt;Low PIM Adapter Kits for 4.3-10 to 7/16 DIN&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;span style="color:#233D5E;"&gt;&lt;span style="font-family:&amp;amp;quot,serif;"&gt;&lt;span style="font-size:20.0pt;"&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;strong&gt;&lt;span style="color:#3333FF;"&gt;&lt;span style="font-family:arial,sans-serif;"&gt;&lt;span style="font-size:15.0pt;"&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;&lt;span style="color:#3333FF;"&gt;&lt;span style="font-family:arial,sans-serif;"&gt;&lt;span style="font-size:15.0pt;"&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;PART NO. &amp;nbsp;AKLP-4310-DIN-TSTA&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;span style="color:#233D5E;"&gt;&lt;span style="font-family:&amp;amp;quot,serif;"&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="color:#233D5E;"&gt;&lt;span style="font-family:wingdings;"&gt;&lt;/span&gt;&lt;/span&gt;&lt;strong&gt;&lt;span style="color:#3333FF;"&gt;&lt;span style="font-family:arial,sans-serif;"&gt;&lt;span style="font-size:15.0pt;"&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;
+
+&lt;div&gt;&lt;strong&gt;&lt;span style="color:#3333FF;"&gt;&lt;span style="font-family:arial,sans-serif;"&gt;&lt;span style="font-size:15.0pt;"&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;* Details: 6 PCS in a Box below*&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;span style="color:#233D5E;"&gt;&lt;span style="font-family:&amp;amp;quot,serif;"&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
+
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+
+&lt;div&gt;
+&lt;table border="1" cellpadding="0" cellspacing="0"&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;td colspan="2" style="width:368px;height:40px;"&gt;
+			&lt;p align="center"&gt;&lt;strong&gt;&lt;span style="color:#3333FF;"&gt;&lt;span style="font-family:arial,sans-serif;"&gt;&lt;span style="font-size:14.0pt;"&gt;4.3-10 Plug to &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+
+			&lt;p&gt;&lt;strong&gt;&lt;span style="color:#3333FF;"&gt;&lt;span style="font-family:arial,sans-serif;"&gt;&lt;span style="font-size:14.0pt;"&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;4.3-10 Plug&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+			&lt;/td&gt;
+			&lt;td colspan="2" style="width:348px;height:40px;"&gt;
+			&lt;p align="center"&gt;&lt;strong&gt;&lt;span style="color:#3333FF;"&gt;&lt;span style="font-family:arial,sans-serif;"&gt;&lt;span style="font-size:14.0pt;"&gt;4.3-10 Jack to &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+
+			&lt;p&gt;&lt;strong&gt;&lt;span style="color:#3333FF;"&gt;&lt;span style="font-family:arial,sans-serif;"&gt;&lt;span style="font-size:14.0pt;"&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 4.3-10 Jack&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+			&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td style="width:182px;height:40px;"&gt;
+			&lt;p align="center"&gt;&lt;strong&gt;&lt;span style="color:#3333FF;"&gt;&lt;span style="font-family:arial,sans-serif;"&gt;&lt;span style="font-size:14.0pt;"&gt;4.3-10 Jack to &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+
+			&lt;p&gt;&lt;strong&gt;&lt;span style="color:#3333FF;"&gt;&lt;span style="font-family:arial,sans-serif;"&gt;&lt;span style="font-size:14.0pt;"&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; DIN Jack&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+			&lt;/td&gt;
+			&lt;td style="width:186px;height:40px;"&gt;
+			&lt;p align="center"&gt;&lt;strong&gt;&lt;span style="color:#3333FF;"&gt;&lt;span style="font-family:arial,sans-serif;"&gt;&lt;span style="font-size:14.0pt;"&gt;4.3-10 Plug to &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+
+			&lt;p&gt;&lt;strong&gt;&lt;span style="color:#3333FF;"&gt;&lt;span style="font-family:arial,sans-serif;"&gt;&lt;span style="font-size:14.0pt;"&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;DIN Plug&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+			&lt;/td&gt;
+			&lt;td style="width:179px;height:40px;"&gt;
+			&lt;p align="center"&gt;&lt;strong&gt;&lt;span style="color:#3333FF;"&gt;&lt;span style="font-family:arial,sans-serif;"&gt;&lt;span style="font-size:14.0pt;"&gt;4.3-10 Plug to &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+
+			&lt;p&gt;&lt;strong&gt;&lt;span style="color:#3333FF;"&gt;&lt;span style="font-family:arial,sans-serif;"&gt;&lt;span style="font-size:14.0pt;"&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; DIN Jack&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+			&lt;/td&gt;
+			&lt;td style="width:168px;height:40px;"&gt;
+			&lt;p align="center"&gt;&lt;strong&gt;&lt;span style="color:#3333FF;"&gt;&lt;span style="font-family:arial,sans-serif;"&gt;&lt;span style="font-size:14.0pt;"&gt;4.3-10 Jack to &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+
+			&lt;p&gt;&lt;strong&gt;&lt;span style="color:#3333FF;"&gt;&lt;span style="font-family:arial,sans-serif;"&gt;&lt;span style="font-size:14.0pt;"&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;DIN Plug&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;
+			&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+
+&lt;div&gt;&amp;nbsp;&lt;/div&gt;
+</textarea><div id="cke_editor_content" class="cke_1 cke cke_reset cke_chrome cke_editor_editor_content cke_ltr cke_browser_webkit" dir="ltr" lang="en" role="application" aria-labelledby="cke_editor_content_arialbl" style="width: 100%;"><span id="cke_editor_content_arialbl" class="cke_voice_label">Rich Text Editor, editor_content</span><div class="cke_inner cke_reset" role="presentation"><span id="cke_1_top" class="cke_top cke_reset_all" role="presentation" style="height: auto; user-select: none;"><span id="cke_10" class="cke_voice_label">Editor toolbars</span><span id="cke_1_toolbox" class="cke_toolbox" role="group" aria-labelledby="cke_10" onmousedown="return false;"><span id="cke_14" class="cke_toolbar" aria-labelledby="cke_14_label" role="toolbar"><span id="cke_14_label" class="cke_voice_label">bar1</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_15" class="cke_button cke_button__source cke_button_off" href="javascript:void('Source')" title="Source" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_15_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(2,event);" onfocus="return CKEDITOR.tools.callFunction(3,event);" onclick="CKEDITOR.tools.callFunction(4,this);return false;"><span class="cke_button_icon cke_button__source_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -1824px;background-size:auto;">&nbsp;</span><span id="cke_15_label" class="cke_button_label cke_button__source_label" aria-hidden="false">Source</span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_16" class="cke_toolbar" aria-labelledby="cke_16_label" role="toolbar"><span id="cke_16_label" class="cke_voice_label">bar2</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_17" class="cke_button cke_button__cut cke_button_disabled " href="javascript:void('Cut')" title="Cut" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_17_label" aria-haspopup="false" aria-disabled="true" onkeydown="return CKEDITOR.tools.callFunction(5,event);" onfocus="return CKEDITOR.tools.callFunction(6,event);" onclick="CKEDITOR.tools.callFunction(7,this);return false;"><span class="cke_button_icon cke_button__cut_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -312px;background-size:auto;">&nbsp;</span><span id="cke_17_label" class="cke_button_label cke_button__cut_label" aria-hidden="false">Cut</span></a><a id="cke_18" class="cke_button cke_button__copy cke_button_disabled " href="javascript:void('Copy')" title="Copy" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_18_label" aria-haspopup="false" aria-disabled="true" onkeydown="return CKEDITOR.tools.callFunction(8,event);" onfocus="return CKEDITOR.tools.callFunction(9,event);" onclick="CKEDITOR.tools.callFunction(10,this);return false;"><span class="cke_button_icon cke_button__copy_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -264px;background-size:auto;">&nbsp;</span><span id="cke_18_label" class="cke_button_label cke_button__copy_label" aria-hidden="false">Copy</span></a><a id="cke_19" class="cke_button cke_button__paste cke_button_off" href="javascript:void('Paste')" title="Paste" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_19_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(11,event);" onfocus="return CKEDITOR.tools.callFunction(12,event);" onclick="CKEDITOR.tools.callFunction(13,this);return false;"><span class="cke_button_icon cke_button__paste_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -360px;background-size:auto;">&nbsp;</span><span id="cke_19_label" class="cke_button_label cke_button__paste_label" aria-hidden="false">Paste</span></a><a id="cke_20" class="cke_button cke_button__pastefromword cke_button_off" href="javascript:void('Paste from Word')" title="Paste from Word" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_20_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(14,event);" onfocus="return CKEDITOR.tools.callFunction(15,event);" onclick="CKEDITOR.tools.callFunction(16,this);return false;"><span class="cke_button_icon cke_button__pastefromword_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -1584px;background-size:auto;">&nbsp;</span><span id="cke_20_label" class="cke_button_label cke_button__pastefromword_label" aria-hidden="false">Paste from Word</span></a><a id="cke_21" class="cke_button cke_button__undo cke_button_disabled " href="javascript:void('Undo')" title="Undo" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_21_label" aria-haspopup="false" aria-disabled="true" onkeydown="return CKEDITOR.tools.callFunction(17,event);" onfocus="return CKEDITOR.tools.callFunction(18,event);" onclick="CKEDITOR.tools.callFunction(19,this);return false;"><span class="cke_button_icon cke_button__undo_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -1992px;background-size:auto;">&nbsp;</span><span id="cke_21_label" class="cke_button_label cke_button__undo_label" aria-hidden="false">Undo</span></a><a id="cke_22" class="cke_button cke_button__redo cke_button_disabled " href="javascript:void('Redo')" title="Redo" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_22_label" aria-haspopup="false" aria-disabled="true" onkeydown="return CKEDITOR.tools.callFunction(20,event);" onfocus="return CKEDITOR.tools.callFunction(21,event);" onclick="CKEDITOR.tools.callFunction(22,this);return false;"><span class="cke_button_icon cke_button__redo_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -1944px;background-size:auto;">&nbsp;</span><span id="cke_22_label" class="cke_button_label cke_button__redo_label" aria-hidden="false">Redo</span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_23" class="cke_toolbar" aria-labelledby="cke_23_label" role="toolbar"><span id="cke_23_label" class="cke_voice_label">bar3</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_24" class="cke_button cke_button__image cke_button_off" href="javascript:void('Image')" title="Image" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_24_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(23,event);" onfocus="return CKEDITOR.tools.callFunction(24,event);" onclick="CKEDITOR.tools.callFunction(25,this);return false;"><span class="cke_button_icon cke_button__image_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -936px;background-size:auto;">&nbsp;</span><span id="cke_24_label" class="cke_button_label cke_button__image_label" aria-hidden="false">Image</span></a><a id="cke_25" class="cke_button cke_button__oembed cke_button_off" href="javascript:void('Embed Media from External Sites')" title="Embed Media from External Sites" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_25_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(26,event);" onfocus="return CKEDITOR.tools.callFunction(27,event);" onclick="CKEDITOR.tools.callFunction(28,this);return false;"><span class="cke_button_icon cke_button__oembed_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/oembed/icons/oembed.png?t=G4CD');background-position:0 0px;background-size:16px;">&nbsp;</span><span id="cke_25_label" class="cke_button_label cke_button__oembed_label" aria-hidden="false">Embed Media from External Sites</span></a><a id="cke_26" class="cke_button cke_button__eqneditor cke_button_off" href="javascript:void('Insert Equation')" title="Insert Equation" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_26_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(29,event);" onfocus="return CKEDITOR.tools.callFunction(30,event);" onclick="CKEDITOR.tools.callFunction(31,this);return false;"><span class="cke_button_icon cke_button__eqneditor_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/eqneditor/icons/eqneditor.png?t=G4CD');background-position:0 0px;background-size:16px;">&nbsp;</span><span id="cke_26_label" class="cke_button_label cke_button__eqneditor_label" aria-hidden="false">Insert Equation</span></a><a id="cke_27" class="cke_button cke_button__flash cke_button_off" href="javascript:void('Flash')" title="Flash" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_27_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(32,event);" onfocus="return CKEDITOR.tools.callFunction(33,event);" onclick="CKEDITOR.tools.callFunction(34,this);return false;"><span class="cke_button_icon cke_button__flash_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -576px;background-size:auto;">&nbsp;</span><span id="cke_27_label" class="cke_button_label cke_button__flash_label" aria-hidden="false">Flash</span></a><a id="cke_28" class="cke_button cke_button__table cke_button_ cke_button_off" href="javascript:void('Table')" title="Table" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_28_label" aria-haspopup="true" onkeydown="return CKEDITOR.tools.callFunction(35,event);" onfocus="return CKEDITOR.tools.callFunction(36,event);" onclick="CKEDITOR.tools.callFunction(37,this);return false;"><span class="cke_button_icon cke_button__table_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -1896px;background-size:auto;">&nbsp;</span><span id="cke_28_label" class="cke_button_label cke_button__table_label" aria-hidden="false">Table</span><span class="cke_button_arrow"></span></a><a id="cke_29" class="cke_button cke_button__horizontalrule cke_button_off" href="javascript:void('Insert Horizontal Line')" title="Insert Horizontal Line" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_29_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(38,event);" onfocus="return CKEDITOR.tools.callFunction(39,event);" onclick="CKEDITOR.tools.callFunction(40,this);return false;"><span class="cke_button_icon cke_button__horizontalrule_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -888px;background-size:auto;">&nbsp;</span><span id="cke_29_label" class="cke_button_label cke_button__horizontalrule_label" aria-hidden="false">Insert Horizontal Line</span></a><a id="cke_30" class="cke_button cke_button__smiley cke_button_off" href="javascript:void('Smiley')" title="Smiley" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_30_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(41,event);" onfocus="return CKEDITOR.tools.callFunction(42,event);" onclick="CKEDITOR.tools.callFunction(43,this);return false;"><span class="cke_button_icon cke_button__smiley_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -1056px;background-size:auto;">&nbsp;</span><span id="cke_30_label" class="cke_button_label cke_button__smiley_label" aria-hidden="false">Smiley</span></a><a id="cke_31" class="cke_button cke_button__link cke_button_off" href="javascript:void('Link')" title="Link" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_31_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(44,event);" onfocus="return CKEDITOR.tools.callFunction(45,event);" onclick="CKEDITOR.tools.callFunction(46,this);return false;"><span class="cke_button_icon cke_button__link_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -1248px;background-size:auto;">&nbsp;</span><span id="cke_31_label" class="cke_button_label cke_button__link_label" aria-hidden="false">Link</span></a><a id="cke_32" class="cke_button cke_button__unlink cke_button_disabled " href="javascript:void('Unlink')" title="Unlink" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_32_label" aria-haspopup="false" aria-disabled="true" onkeydown="return CKEDITOR.tools.callFunction(47,event);" onfocus="return CKEDITOR.tools.callFunction(48,event);" onclick="CKEDITOR.tools.callFunction(49,this);return false;"><span class="cke_button_icon cke_button__unlink_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -1272px;background-size:auto;">&nbsp;</span><span id="cke_32_label" class="cke_button_label cke_button__unlink_label" aria-hidden="false">Unlink</span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_33" class="cke_toolbar" aria-labelledby="cke_33_label" role="toolbar"><span id="cke_33_label" class="cke_voice_label">bar4</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_34" class="cke_button cke_button__numberedlist cke_button_off" href="javascript:void('Insert/Remove Numbered List')" title="Insert/Remove Numbered List" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_34_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(50,event);" onfocus="return CKEDITOR.tools.callFunction(51,event);" onclick="CKEDITOR.tools.callFunction(52,this);return false;"><span class="cke_button_icon cke_button__numberedlist_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -1368px;background-size:auto;">&nbsp;</span><span id="cke_34_label" class="cke_button_label cke_button__numberedlist_label" aria-hidden="false">Insert/Remove Numbered List</span></a><a id="cke_35" class="cke_button cke_button__bulletedlist cke_button_off" href="javascript:void('Insert/Remove Bulleted List')" title="Insert/Remove Bulleted List" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_35_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(53,event);" onfocus="return CKEDITOR.tools.callFunction(54,event);" onclick="CKEDITOR.tools.callFunction(55,this);return false;"><span class="cke_button_icon cke_button__bulletedlist_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -1320px;background-size:auto;">&nbsp;</span><span id="cke_35_label" class="cke_button_label cke_button__bulletedlist_label" aria-hidden="false">Insert/Remove Bulleted List</span></a><a id="cke_36" class="cke_button cke_button__removeformat cke_button_off" href="javascript:void('Remove Format')" title="Remove Format" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_36_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(56,event);" onfocus="return CKEDITOR.tools.callFunction(57,event);" onclick="CKEDITOR.tools.callFunction(58,this);return false;"><span class="cke_button_icon cke_button__removeformat_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -1680px;background-size:auto;">&nbsp;</span><span id="cke_36_label" class="cke_button_label cke_button__removeformat_label" aria-hidden="false">Remove Format</span></a><a id="cke_37" class="cke_button cke_button__syntaxhighlight cke_button_off" href="javascript:void('Add or update a code snippet')" title="Add or update a code snippet" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_37_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(59,event);" onfocus="return CKEDITOR.tools.callFunction(60,event);" onclick="CKEDITOR.tools.callFunction(61,this);return false;"><span class="cke_button_icon cke_button__syntaxhighlight_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/syntaxhighlight/icons/syntaxhighlight.png?t=G4CD');background-position:0 0px;background-size:16px;">&nbsp;</span><span id="cke_37_label" class="cke_button_label cke_button__syntaxhighlight_label" aria-hidden="false">Add or update a code snippet</span></a><a id="cke_38" class="cke_button cke_button__codesnippet cke_button_off" href="javascript:void('Insert Code Snippet')" title="Insert Code Snippet" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_38_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(62,event);" onfocus="return CKEDITOR.tools.callFunction(63,event);" onclick="CKEDITOR.tools.callFunction(64,this);return false;"><span class="cke_button_icon cke_button__codesnippet_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/codesnippet/icons/codesnippet.png?t=G4CD');background-position:0 0px;background-size:16px;">&nbsp;</span><span id="cke_38_label" class="cke_button_label cke_button__codesnippet_label" aria-hidden="false">Insert Code Snippet</span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_39" class="cke_toolbar" aria-labelledby="cke_39_label" role="toolbar"><span id="cke_39_label" class="cke_voice_label">bar5</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_40" class="cke_button cke_button__blockquote cke_button_off" href="javascript:void('Block Quote')" title="Block Quote" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_40_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(65,event);" onfocus="return CKEDITOR.tools.callFunction(66,event);" onclick="CKEDITOR.tools.callFunction(67,this);return false;"><span class="cke_button_icon cke_button__blockquote_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -216px;background-size:auto;">&nbsp;</span><span id="cke_40_label" class="cke_button_label cke_button__blockquote_label" aria-hidden="false">Block Quote</span></a><a id="cke_41" class="cke_button cke_button__creatediv cke_button_off" href="javascript:void('Create Div Container')" title="Create Div Container" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_41_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(68,event);" onfocus="return CKEDITOR.tools.callFunction(69,event);" onclick="CKEDITOR.tools.callFunction(70,this);return false;"><span class="cke_button_icon cke_button__creatediv_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -480px;background-size:auto;">&nbsp;</span><span id="cke_41_label" class="cke_button_label cke_button__creatediv_label" aria-hidden="false">Create Div Container</span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_42" class="cke_toolbar" aria-labelledby="cke_42_label" role="toolbar"><span id="cke_42_label" class="cke_voice_label">bar6</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_43" class="cke_button cke_button__pagebreak cke_button_off" href="javascript:void('Insert Page Break for Printing')" title="Insert Page Break for Printing" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_43_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(71,event);" onfocus="return CKEDITOR.tools.callFunction(72,event);" onclick="CKEDITOR.tools.callFunction(73,this);return false;"><span class="cke_button_icon cke_button__pagebreak_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -1488px;background-size:auto;">&nbsp;</span><span id="cke_43_label" class="cke_button_label cke_button__pagebreak_label" aria-hidden="false">Insert Page Break for Printing</span></a><a id="cke_44" class="cke_button cke_button__widgettemplatemenu cke_button_off " href="javascript:void('Insert Template')" title="Insert Template" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_44_label" aria-haspopup="true" aria-disabled="false" onkeydown="return CKEDITOR.tools.callFunction(74,event);" onfocus="return CKEDITOR.tools.callFunction(75,event);" onclick="CKEDITOR.tools.callFunction(76,this);return false;"><span class="cke_button_icon cke_button__widgettemplatemenu_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/widgettemplatemenu/icons/widgettemplatemenu.png?t=G4CD');background-position:0 undefinedpx;background-size:16px;">&nbsp;</span><span id="cke_44_label" class="cke_button_label cke_button__widgettemplatemenu_label" aria-hidden="false">Insert Template</span><span class="cke_button_arrow"></span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_45" class="cke_toolbar" aria-labelledby="cke_45_label" role="toolbar"><span id="cke_45_label" class="cke_voice_label">bar7</span><span class="cke_toolbar_start"></span><span id="cke_11" class="cke_combo cke_combo__styles cke_combo_off" role="presentation"><span id="cke_11_label" class="cke_combo_label">Styles</span><a class="cke_combo_button" title="Formatting Styles" tabindex="-1" href="javascript:void('Formatting Styles')" hidefocus="true" role="button" aria-labelledby="cke_11_label" aria-haspopup="true" onkeydown="return CKEDITOR.tools.callFunction(78,event,this);" onfocus="return CKEDITOR.tools.callFunction(79,event);" onclick="CKEDITOR.tools.callFunction(77,this);return false;"><span id="cke_11_text" class="cke_combo_text cke_combo_inlinelabel">Styles</span><span class="cke_combo_open"><span class="cke_combo_arrow"></span></span></a></span><span id="cke_12" class="cke_combo cke_combo__format cke_combo_off" role="presentation"><span id="cke_12_label" class="cke_combo_label">Format</span><a class="cke_combo_button" title="Paragraph Format" tabindex="-1" href="javascript:void('Paragraph Format')" hidefocus="true" role="button" aria-labelledby="cke_12_label" aria-haspopup="true" onkeydown="return CKEDITOR.tools.callFunction(81,event,this);" onfocus="return CKEDITOR.tools.callFunction(82,event);" onclick="CKEDITOR.tools.callFunction(80,this);return false;"><span id="cke_12_text" class="cke_combo_text cke_combo_inlinelabel">Format</span><span class="cke_combo_open"><span class="cke_combo_arrow"></span></span></a></span><span id="cke_13" class="cke_combo cke_combo__fontsize cke_combo_off" role="presentation"><span id="cke_13_label" class="cke_combo_label">Size</span><a class="cke_combo_button" title="Font Size" tabindex="-1" href="javascript:void('Font Size')" hidefocus="true" role="button" aria-labelledby="cke_13_label" aria-haspopup="true" onkeydown="return CKEDITOR.tools.callFunction(84,event,this);" onfocus="return CKEDITOR.tools.callFunction(85,event);" onclick="CKEDITOR.tools.callFunction(83,this);return false;"><span id="cke_13_text" class="cke_combo_text cke_combo_inlinelabel">Size</span><span class="cke_combo_open"><span class="cke_combo_arrow"></span></span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_46" class="cke_toolbar" aria-labelledby="cke_46_label" role="toolbar"><span id="cke_46_label" class="cke_voice_label">bar7-1</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_47" class="cke_button cke_button__textcolor cke_button_off" href="javascript:void('Text Color')" title="Text Color" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_47_label" aria-haspopup="true" onkeydown="return CKEDITOR.tools.callFunction(86,event);" onfocus="return CKEDITOR.tools.callFunction(87,event);" onclick="CKEDITOR.tools.callFunction(88,this);return false;"><span class="cke_button_icon cke_button__textcolor_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -408px;background-size:auto;">&nbsp;</span><span id="cke_47_label" class="cke_button_label cke_button__textcolor_label" aria-hidden="false">Text Color</span><span class="cke_button_arrow"></span></a><a id="cke_48" class="cke_button cke_button__bgcolor cke_button_off" href="javascript:void('Background Color')" title="Background Color" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_48_label" aria-haspopup="true" onkeydown="return CKEDITOR.tools.callFunction(89,event);" onfocus="return CKEDITOR.tools.callFunction(90,event);" onclick="CKEDITOR.tools.callFunction(91,this);return false;"><span class="cke_button_icon cke_button__bgcolor_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -384px;background-size:auto;">&nbsp;</span><span id="cke_48_label" class="cke_button_label cke_button__bgcolor_label" aria-hidden="false">Background Color</span><span class="cke_button_arrow"></span></a><a id="cke_49" class="cke_button cke_button__bold cke_button_off" href="javascript:void('Bold')" title="Bold" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_49_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(92,event);" onfocus="return CKEDITOR.tools.callFunction(93,event);" onclick="CKEDITOR.tools.callFunction(94,this);return false;"><span class="cke_button_icon cke_button__bold_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -24px;background-size:auto;">&nbsp;</span><span id="cke_49_label" class="cke_button_label cke_button__bold_label" aria-hidden="false">Bold</span></a><a id="cke_50" class="cke_button cke_button__italic cke_button_off" href="javascript:void('Italic')" title="Italic" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_50_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(95,event);" onfocus="return CKEDITOR.tools.callFunction(96,event);" onclick="CKEDITOR.tools.callFunction(97,this);return false;"><span class="cke_button_icon cke_button__italic_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -48px;background-size:auto;">&nbsp;</span><span id="cke_50_label" class="cke_button_label cke_button__italic_label" aria-hidden="false">Italic</span></a><a id="cke_51" class="cke_button cke_button__underline cke_button_off" href="javascript:void('Underline')" title="Underline" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_51_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(98,event);" onfocus="return CKEDITOR.tools.callFunction(99,event);" onclick="CKEDITOR.tools.callFunction(100,this);return false;"><span class="cke_button_icon cke_button__underline_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -144px;background-size:auto;">&nbsp;</span><span id="cke_51_label" class="cke_button_label cke_button__underline_label" aria-hidden="false">Underline</span></a><a id="cke_52" class="cke_button cke_button__strike cke_button_off" href="javascript:void('Strikethrough')" title="Strikethrough" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_52_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(101,event);" onfocus="return CKEDITOR.tools.callFunction(102,event);" onclick="CKEDITOR.tools.callFunction(103,this);return false;"><span class="cke_button_icon cke_button__strike_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -72px;background-size:auto;">&nbsp;</span><span id="cke_52_label" class="cke_button_label cke_button__strike_label" aria-hidden="false">Strikethrough</span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_53" class="cke_toolbar" aria-labelledby="cke_53_label" role="toolbar"><span id="cke_53_label" class="cke_voice_label">bar8</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_54" class="cke_button cke_button__outdent cke_button_disabled " href="javascript:void('Decrease Indent')" title="Decrease Indent" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_54_label" aria-haspopup="false" aria-disabled="true" onkeydown="return CKEDITOR.tools.callFunction(104,event);" onfocus="return CKEDITOR.tools.callFunction(105,event);" onclick="CKEDITOR.tools.callFunction(106,this);return false;"><span class="cke_button_icon cke_button__outdent_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -1032px;background-size:auto;">&nbsp;</span><span id="cke_54_label" class="cke_button_label cke_button__outdent_label" aria-hidden="false">Decrease Indent</span></a><a id="cke_55" class="cke_button cke_button__indent cke_button_off" href="javascript:void('Increase Indent')" title="Increase Indent" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_55_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(107,event);" onfocus="return CKEDITOR.tools.callFunction(108,event);" onclick="CKEDITOR.tools.callFunction(109,this);return false;"><span class="cke_button_icon cke_button__indent_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -984px;background-size:auto;">&nbsp;</span><span id="cke_55_label" class="cke_button_label cke_button__indent_label" aria-hidden="false">Increase Indent</span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_56" class="cke_toolbar" aria-labelledby="cke_56_label" role="toolbar"><span id="cke_56_label" class="cke_voice_label">bar9</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_57" class="cke_button cke_button__justifyleft cke_button_off" href="javascript:void('Align Left')" title="Align Left" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_57_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(110,event);" onfocus="return CKEDITOR.tools.callFunction(111,event);" onclick="CKEDITOR.tools.callFunction(112,this);return false;"><span class="cke_button_icon cke_button__justifyleft_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -1128px;background-size:auto;">&nbsp;</span><span id="cke_57_label" class="cke_button_label cke_button__justifyleft_label" aria-hidden="false">Align Left</span></a><a id="cke_58" class="cke_button cke_button__justifycenter cke_button_off" href="javascript:void('Center')" title="Center" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_58_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(113,event);" onfocus="return CKEDITOR.tools.callFunction(114,event);" onclick="CKEDITOR.tools.callFunction(115,this);return false;"><span class="cke_button_icon cke_button__justifycenter_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -1104px;background-size:auto;">&nbsp;</span><span id="cke_58_label" class="cke_button_label cke_button__justifycenter_label" aria-hidden="false">Center</span></a><a id="cke_59" class="cke_button cke_button__justifyright cke_button_off" href="javascript:void('Align Right')" title="Align Right" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_59_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(116,event);" onfocus="return CKEDITOR.tools.callFunction(117,event);" onclick="CKEDITOR.tools.callFunction(118,this);return false;"><span class="cke_button_icon cke_button__justifyright_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -1152px;background-size:auto;">&nbsp;</span><span id="cke_59_label" class="cke_button_label cke_button__justifyright_label" aria-hidden="false">Align Right</span></a><a id="cke_60" class="cke_button cke_button__justifyblock cke_button_off" href="javascript:void('Justify')" title="Justify" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_60_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(119,event);" onfocus="return CKEDITOR.tools.callFunction(120,event);" onclick="CKEDITOR.tools.callFunction(121,this);return false;"><span class="cke_button_icon cke_button__justifyblock_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -1080px;background-size:auto;">&nbsp;</span><span id="cke_60_label" class="cke_button_label cke_button__justifyblock_label" aria-hidden="false">Justify</span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_61" class="cke_toolbar" aria-labelledby="cke_61_label" role="toolbar"><span id="cke_61_label" class="cke_voice_label">bar10</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_62" class="cke_button cke_button__find cke_button_off" href="javascript:void('Find')" title="Find" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_62_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(122,event);" onfocus="return CKEDITOR.tools.callFunction(123,event);" onclick="CKEDITOR.tools.callFunction(124,this);return false;"><span class="cke_button_icon cke_button__find_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -528px;background-size:auto;">&nbsp;</span><span id="cke_62_label" class="cke_button_label cke_button__find_label" aria-hidden="false">Find</span></a><a id="cke_63" class="cke_button cke_button__replace cke_button_off" href="javascript:void('Replace')" title="Replace" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_63_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(125,event);" onfocus="return CKEDITOR.tools.callFunction(126,event);" onclick="CKEDITOR.tools.callFunction(127,this);return false;"><span class="cke_button_icon cke_button__replace_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -552px;background-size:auto;">&nbsp;</span><span id="cke_63_label" class="cke_button_label cke_button__replace_label" aria-hidden="false">Replace</span></a><a id="cke_64" class="cke_button cke_button__selectall cke_button_off" href="javascript:void('Select All')" title="Select All" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_64_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(128,event);" onfocus="return CKEDITOR.tools.callFunction(129,event);" onclick="CKEDITOR.tools.callFunction(130,this);return false;"><span class="cke_button_icon cke_button__selectall_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/icons.png?t=G4CD');background-position:0 -1728px;background-size:auto;">&nbsp;</span><span id="cke_64_label" class="cke_button_label cke_button__selectall_label" aria-hidden="false">Select All</span></a><a id="cke_65" class="cke_button cke_button__fontawesome cke_button_off" href="javascript:void('Insert Font Awesome')" title="Insert Font Awesome" tabindex="-1" hidefocus="true" role="button" aria-labelledby="cke_65_label" aria-haspopup="false" onkeydown="return CKEDITOR.tools.callFunction(131,event);" onfocus="return CKEDITOR.tools.callFunction(132,event);" onclick="CKEDITOR.tools.callFunction(133,this);return false;"><span class="cke_button_icon cke_button__fontawesome_icon" style="background-image:url('https://www.5c-rf.com/modules/tadtools/ckeditor/plugins/fontawesome/icons/fontawesome.png?t=G4CD');background-position:0 0px;background-size:16px;">&nbsp;</span><span id="cke_65_label" class="cke_button_label cke_button__fontawesome_label" aria-hidden="false">Insert Font Awesome</span></a></span><span class="cke_toolbar_end"></span></span></span></span><div id="cke_1_contents" class="cke_contents cke_reset" role="presentation" style="height: 200px;"><span id="cke_70" class="cke_voice_label">Press ALT 0 for help</span><iframe src="" frameborder="0" class="cke_wysiwyg_frame cke_reset" style="width: 100%; height: 100%;" title="Rich Text Editor, editor_content" aria-describedby="cke_70" tabindex="0" allowtransparency="true"></iframe></div><span id="cke_1_bottom" class="cke_bottom cke_reset_all" role="presentation" style="user-select: none;"><span id="cke_1_resizer" class="cke_resizer cke_resizer_vertical cke_resizer_ltr" title="Resize" onmousedown="CKEDITOR.tools.callFunction(0, event)">◢</span><span id="cke_1_path_label" class="cke_voice_label">Elements path</span><span id="cke_1_path" class="cke_path" role="group" aria-labelledby="cke_1_path_label"><span class="cke_path_empty">&nbsp;</span></span></span></div></div>
+
+        <script type="text/javascript">
+            
+            CKEDITOR.replace('editor_content' , {
+            skin : 'moono' ,
+            width : '100%' ,
+            height : '200' ,
+            language : 'en' ,
+            toolbar : 'my' ,
+            contentsCss : ['https://www.5c-rf.com/modules/tadtools/bootstrap3/css/bootstrap.css','https://www.5c-rf.com/modules/tadtools/css/font-awesome/css/font-awesome.css'],
+            extraPlugins: 'syntaxhighlight,dialog,oembed,eqneditor,quicktable,imagerotate,fakeobjects,widget,lineutils,widgetbootstrap,widgettemplatemenu,pagebreak,fontawesome,prism,codesnippet,codemirror',
+            
+            filebrowserBrowseUrl : 'https://www.5c-rf.com/modules/tadtools/elFinder/elfinder.php?type=file&mod_dir=ugm_a_cart/fck',
+            filebrowserImageBrowseUrl : 'https://www.5c-rf.com/modules/tadtools/elFinder/elfinder.php?type=image&mod_dir=ugm_a_cart/fck',
+            filebrowserFlashBrowseUrl : 'https://www.5c-rf.com/modules/tadtools/elFinder/elfinder.php?type=flash&mod_dir=ugm_a_cart/fck',
+            filebrowserUploadUrl : 'https://www.5c-rf.com/modules/tadtools/upload.php?type=file&mod_dir=ugm_a_cart/fck',
+            filebrowserImageUploadUrl : 'https://www.5c-rf.com/modules/tadtools/upload.php?type=image&mod_dir=ugm_a_cart/fck',
+            filebrowserFlashUploadUrl : 'https://www.5c-rf.com/modules/tadtools/upload.php?type=flash&mod_dir=ugm_a_cart/fck',
+            qtRows: 10, // Count of rows
+            qtColumns: 10, // Count of columns
+            qtBorder: '1', // Border of inserted table
+            qtWidth: '100%', // Width of inserted table
+            qtStyle: { 'border-collapse' : 'collapse' },
+            qtClass: 'table table-bordered table-hover table-condensed', // Class of table
+            qtCellPadding: '0', // Cell padding table
+            qtCellSpacing: '0', // Cell spacing table
+            qtPreviewBorder: '1px double black', // preview table border
+            qtPreviewSize: '15px', // Preview table cell size
+            qtPreviewBackground: '#c8def4' // preview table background (hover)
+            } );
+        </script>
+        <script>CKEDITOR.dtd.$removeEmpty['span'] = false;</script>
+            
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="text-center pb-20">
+      <input type="hidden" name="token" id="token" value="$2y$10$7TgDM0ms/ce07UB1bJ7V.eqUmT4kX4xKztZeifBka/N/zD7LAXS8C">
+      <input type="hidden" name="op" value="opUpdate">
+      <input type="hidden" name="sn" value="56" id="sn">
+      <button type="submit" class="btn btn-primary">送出</button>
+      <button type="button" class="btn btn-warning" onclick="location.href='http://www.5c-rf.com/modules/ugm_a_cart/prod.php'">返回</button>
+    </div>
+
+  </form>
+</body>
+</html>

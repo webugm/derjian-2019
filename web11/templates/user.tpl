@@ -16,13 +16,11 @@
     <script src="<{$xoImgUrl}>bootstrap/bootstrap.min.js"></script>
   </head>
   <body>
-    <{if !$smarty.session.admin}>
-			<{* 登入畫面 *}>
-			<{include file="tpl/login.tpl"}>
-		<{else}>
-			<{* 訪客頁面 *}>			
-			<{include file="tpl/admin.tpl"}>
-    <{/if}>
+	<{if $smarty.session.admin}>
+		<{include file="tpl/admin.tpl"}>
+	<{else}>
+		<{include file="tpl/login.tpl"}>
+	<{/if}>
 
   </body>
 </html>

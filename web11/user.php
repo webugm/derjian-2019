@@ -8,20 +8,24 @@ $sn = system_CleanVars($_REQUEST, 'sn', '', 'int');
 // echo $op;die();
  
 /* 程式流程 */
-switch ($op){ 
+switch ($op){
+  case "op_form" :
+    $msg = op_form();
+    break;
+
+  case "logout" :
+    $msg = logout();
+    header("location:index.php");//注意前面不可以有輸出
+    exit; 
+
   case "login" :
     $msg = login();
     header("location:index.php");//注意前面不可以有輸出
     exit;
  
-  case "logout" :
-    $msg = logout();
-    header("location:index.php");//注意前面不可以有輸出
-    exit;
-
   default:
-    $op = "op_form";
-    op_form();
+    $op = "op_list";
+    op_list();
     break;  
 }
  
@@ -33,10 +37,17 @@ $smarty->assign("op", $op);
 $smarty->display('user.tpl');
  
 /*---- 函數區-----*/
+function logout(){
+  $_SESSION['admin']="";
+  setcookie("name", "", time()- 3600 * 24 * 365); 
+  setcookie("token", "", time()- 3600 * 24 * 365);
+}
+
 function op_form(){
   global $smarty;
  
 }
+
 function login(){
   global $smarty;
   $name="admin";
@@ -45,27 +56,19 @@ function login(){
 
   if($name == $_POST['name'] and $pass == $_POST['pass']){
     $_SESSION['admin'] = true; 
-    if($_POST['remember']){      
-      setcookie("name", $name, time()+3600 * 24 * 365);
-      setcookie("token", $token, time()+3600 * 24 * 365);
-      setcookie("login",true,time()+3600 * 24 * 365);
-    }  
+    $_POST['remember'] = isset($_POST['remember']) ? $_POST['remember'] : "";
+    
+    if($_POST['remember']){
+      setcookie("name", $name, time()+ 3600 * 24 * 365); 
+      setcookie("token", $token, time()+ 3600 * 24 * 365); 
+    }
+
     header("location:index.php");//注意前面不可以有輸出
   }else{      
     header("location:user.php");//注意前面不可以有輸出
   }
 }
-
-/*===========
-
-===========*/
-function logout(){
-  $_SESSION['admin'] = false;     
-  setcookie("name", "", time()-3600 * 24 * 365);
-  setcookie("token", "", time()-3600 * 24 * 365);
-  setcookie("login","",time()-3600 * 24 * 365);
-} 
-
+ 
 function op_list(){
   global $smarty;
 }

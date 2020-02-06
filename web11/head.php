@@ -28,12 +28,17 @@ $WEB['file_name'] = basename($_SERVER['PHP_SELF']); //index.php
 #引入樣板引擎
 require_once _WEB_PATH.'/smarty.php';
 #引入資料庫設定
-// require_once _WEB_PATH.'/sqlConfig.php';
+require_once _WEB_PATH.'/sqlConfig.php';
 #引入設定檔
 require_once _WEB_PATH . '/function.php';
 
 $_SESSION['admin'] = isset($_SESSION['admin']) ? $_SESSION['admin'] : false;
 
-if(isset($_COOKIE['name']) and isset($_COOKIE['token']) and isset($_COOKIE['login'])){
-  if($_COOKIE['name'] == "admin" and $_COOKIE['token'] == "xxxxxx")$_SESSION['admin']=true;
+// 為了cookie使用
+if(!$_SESSION['admin']){
+  $_COOKIE['token'] = isset($_COOKIE['token']) ? $_COOKIE['token'] : "";
+  $_COOKIE['name'] = isset($_COOKIE['name']) ? $_COOKIE['name'] : "";
+  if($_COOKIE['name'] == "admin" and $_COOKIE['token'] == "xxxxxx"){
+    $_SESSION['admin'] = true;
+  }
 }

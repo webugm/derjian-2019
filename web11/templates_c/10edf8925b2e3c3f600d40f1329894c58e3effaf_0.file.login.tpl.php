@@ -1,4 +1,27 @@
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-02-05 04:45:04
+  from 'D:\ugm\xampp\htdocs\web11\templates\tpl\login.tpl' */
 
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5e3a3a40cf0678_70064357',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '10edf8925b2e3c3f600d40f1329894c58e3effaf' => 
+    array (
+      0 => 'D:\\ugm\\xampp\\htdocs\\web11\\templates\\tpl\\login.tpl',
+      1 => 1580874218,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5e3a3a40cf0678_70064357 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 		<style>
 			.form-signin {
 					width: 100%;
@@ -31,4 +54,5 @@
 								您還沒還沒註冊嗎？請 <a href="#">點選此處註冊您的新帳號</a>。
 						</div>
 				</form>
-		</div>
+		</div><?php }
+}
