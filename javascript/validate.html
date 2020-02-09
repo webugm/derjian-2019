@@ -70,7 +70,14 @@
     </div>
     <script>
       $(function(){
-        $("#myForm").validate();
+        $("#myForm").validate({
+          rules:{
+            no : true
+          },
+          messages:{
+            no : "這是必填欄位"
+          }
+        });
       })    
     </script>
 
