@@ -8,17 +8,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
 
-    <title>Boostrap4 Form</title>
+    <title>jQuery Validate</title>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="bootstrap/jquery-3.4.1.min.js"></script>
     <script src="bootstrap/popper.min.js"></script>
     <script src="bootstrap/bootstrap.min.js"></script>
   </head>
-  <body>    
-  
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
+
     <div class="container">
-      <h1 class="text-center my-5">Boostrap4 Form</h1>
+      <h1 class="text-center my-5">jQuery Validate</h1>
       <form role="form" action="index.html" method="post" id="myForm" enctype="multipart/form-data">
         <div class="row">         
           <!--編號-->              
@@ -32,7 +33,7 @@
           <div class="col-sm-4">
             <div class="form-group">
               <label for="title">產品名稱 <span>*</span></label>
-              <input type="text" class="form-control" name="title" id="title" value="">
+              <input type="text" class="form-control email" name="title" id="title" value="">
             </div>
           </div>
 
@@ -67,5 +68,11 @@
       </form>
 
     </div>
+    <script>
+      $(function(){
+        $("#myForm").validate();
+      })    
+    </script>
+
   </body>
 </html>
