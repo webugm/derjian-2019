@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+
+    <title>index</title>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="bootstrap/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.1.0.min.js"
+  integrity="sha256-ycJeXbll9m7dHKeaPbXBkZH8BuP99SmPm/8q5O+SbBc="
+  crossorigin="anonymous"></script>
+    <script src="bootstrap/popper.min.js"></script>
+    <script src="bootstrap/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="jquery.growl.css">
+    <script src="jquery.growl.js"></script>
+  </head>
+  <body>
+    <h1>adskfjalsdfl</h1>
+    <script type="text/javascript">
+
+      (function($){
+      
+      $(document).ready(function(){
+          
+      $.jGrowl.defaults.closer = false;
+      
+      $.jGrowl.defaults.animateOpen = {
+        width: 'show'
+      };
+      $.jGrowl.defaults.animateClose = {
+        width: 'hide'
+      };
+      
+      $.jGrowl("Hello world!", { sticky: true });
+      $.jGrowl("Another notification.", { sticky: true });
+      $.jGrowl("One last one to make a trifecta.", { sticky: true });
+        });
+      })(jQuery);
+      
+      </script>
+
+  </body>
+</html>

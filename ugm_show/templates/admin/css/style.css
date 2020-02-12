@@ -1,0 +1,212 @@
+* {
+  outline: 0;
+  margin: 0;
+  padding: 0;
+}
+
+html, * {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Oxygen', sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  color: #252525;
+  font-weight: 400;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+p {
+  font-size: 13px;
+  color: #252525;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Oxygen', sans-serif;
+  text-transform: uppercase;
+  color: #252525;
+  margin-top: 0;
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+h5 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+/*=== 1.COMMON ===*/
+.container {
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .container {
+    width: 450px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.main-wrapper {
+  background-color: #ffffff;
+}
+
+body.bodyColor.default {
+  background-color: #f5f5f5;
+}
+
+/*=== 2.1 HEADER V1 ===*/
+.header {
+  background-color: #ffffff;
+  position: relative;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.bb-fixed-header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 999;
+}
+
+/*=== 2.1.1 TOPBAR ===*/
+.topBar {
+  width: 100%;
+  display: block;
+  min-height: 35px;
+  height: auto;
+  background-color: #252525;
+}
+
+.topBar ul li a {
+  padding: 0 3px;
+  display: block;
+  line-height: 35px;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
+  color: #ffffff;
+}
+
+.topBar ul li a:hover, .topBar ul li a:focus {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$value)";
+  filter: alpha(opacity=0.8);
+  -moz-opacity: 0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
+}
+
+.topBar ul.pull-right li {
+  padding: 0;
+  /*float: left;*/
+}
+
+.topBar ul.pull-right li a {
+  font-size: 12px;
+  display: block;
+  padding: 0 10px;
+}
+
+.topBar ul.pull-right > li {
+  margin: 0 0 0 0px;
+}
+
+/*.topBar ul.pull-right > li:nth-child(2)::before {
+  content: "|";
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.2);
+}*/
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.top-right .account-login span small {
+  color: rgba(255, 255, 255, 0.5);
+  padding: 0 10px;
+}
+
+.top-right .account-login span a {
+  transition: all 0.3s ease-in-out;
+}
+
+.top-right .account-login span a:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.top-right .account-login span a:focus {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.top-right .searchBox {
+  position: relative;
+}
+
+.top-right .searchBox a {
+  color: #ffffff;
+  transition: all 0.3s ease-in-out;
+  padding: 0 10px;
+}
+
+.top-right .searchBox a:hover {
+  opacity: .5;
+}
+
+.top-right .searchBox a i {
+  width: 15px;
+}
+
+.top-right .searchBox .dropdown-menu {
+  padding: 10px 15px;
+  border-radius: 0;
+}
+
+ul.dropdown-menu li a{
+  color:#000;
+}
+
+/*== table list==*/
+.table-list td{
+  vertical-align: middle !important;
+}

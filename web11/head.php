@@ -42,3 +42,12 @@ if(!$_SESSION['admin']){
     $_SESSION['admin'] = true;
   }
 }
+
+#轉向訊息
+$_SESSION['redirect'] = isset($_SESSION['redirect']) ? $_SESSION['redirect'] : false;
+$_SESSION['message'] = isset($_SESSION['message']) ? $_SESSION['message'] : false;
+$_SESSION['time'] = isset($_SESSION['time']) ? $_SESSION['time'] : false;
+$smarty->assign("redirect",$_SESSION['redirect']);
+$smarty->assign("message",$_SESSION['message']);
+$smarty->assign("time",$_SESSION['time']);
+$_SESSION['redirect'] = false;

@@ -26,6 +26,9 @@
 </head>
 
 <body id="page-top">
+  
+  <{* 轉向 *}>
+  <{include file="tpl/redirect.tpl"}>
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">

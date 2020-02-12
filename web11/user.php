@@ -15,17 +15,19 @@ switch ($op){
 
   case "reg" :
     $msg = reg();
-    header("location:index.php");//注意前面不可以有輸出
+    redirect_header("index.php", "註冊成功");
+    //header("location:index.php");//注意前面不可以有輸出
     exit; 
 
   case "logout" :
     $msg = logout();
-    header("location:index.php");//注意前面不可以有輸出
+    redirect_header("index.php", "您已登出");
+    //header("location:index.php");//注意前面不可以有輸出
     exit; 
 
   case "login" :
     $msg = login();
-    header("location:index.php");//注意前面不可以有輸出
+    redirect_header("user.php", $msg);
     exit;
  
   default:
@@ -101,10 +103,9 @@ function login(){
       setcookie("name", $name, time()+ 3600 * 24 * 365); 
       setcookie("token", $token, time()+ 3600 * 24 * 365); 
     }
-
-    header("location:index.php");//注意前面不可以有輸出
+    return "登入成功";
   }else{      
-    header("location:user.php");//注意前面不可以有輸出
+    return "登入失敗";
   }
 }
  

@@ -1,26 +1,27 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-05 17:25:53
+/* Smarty version 3.1.34-dev-7, created on 2020-02-12 19:43:54
   from 'D:\0_course\xampp\xampp\htdocs\web11\templates\theme.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e3aec91d8cd13_73355015',
+  'unifunc' => 'content_5e44476ab8d982_42887975',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '627b7b9a3b5d134e4d065b384c224a3e0495ff03' => 
     array (
       0 => 'D:\\0_course\\xampp\\xampp\\htdocs\\web11\\templates\\theme.tpl',
-      1 => 1580891450,
+      1 => 1581533021,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:tpl/redirect.tpl' => 1,
   ),
 ),false)) {
-function content_5e3aec91d8cd13_73355015 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e44476ab8d982_42887975 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -52,6 +53,9 @@ css/creative.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
+  
+    <?php $_smarty_tpl->_subTemplateRender("file:tpl/redirect.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">

@@ -16,6 +16,8 @@
     <script src="<{$xoImgUrl}>bootstrap/bootstrap.min.js"></script>
   </head>
   <body>
+  <{* 轉向 *}>
+  <{include file="tpl/redirect.tpl"}>
   <{if $smarty.session.admin}>
     <{* 管理員 *}>
 		<{include file="tpl/admin.tpl"}>
