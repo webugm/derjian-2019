@@ -15,19 +15,18 @@ switch ($op){
 
   case "reg" :
     $msg = reg();
-    redirect_header("index.php", "註冊成功");
-    //header("location:index.php");//注意前面不可以有輸出
-    exit; 
+    header("location:index.php");//注意前面不可以有輸出
+    exit;
 
   case "logout" :
     $msg = logout();
-    redirect_header("index.php", "您已登出");
-    //header("location:index.php");//注意前面不可以有輸出
+    //(轉向頁面,訊息,時間)
+    redirect_header("user.php", '登出成功', 3000);
     exit; 
 
   case "login" :
     $msg = login();
-    redirect_header("user.php", $msg);
+    redirect_header("index.php", $msg , 3000);
     exit;
  
   default:
@@ -35,7 +34,6 @@ switch ($op){
     login_form();
     break;  
 }
- 
 /*---- 將變數送至樣版----*/
 $smarty->assign("WEB", $WEB);
 $smarty->assign("op", $op);
@@ -44,8 +42,15 @@ $smarty->assign("op", $op);
 $smarty->display('user.tpl');
  
 /*---- 函數區-----*/
-function reg_form(){
-  global $smarty; 
+
+/*############################################
+  轉向函數
+############################################*/
+function redirect_header($url = "index.php", $message = '訊息', $time = 3000) {  
+  $_SESSION['redirect'] = true;
+  $_SESSION['message'] = $message;
+  $_SESSION['time'] = $time;
+  header("location:{$url}");//注意前面不可以有輸出
 }
 
 /*=======================
@@ -53,30 +58,24 @@ function reg_form(){
 =======================*/
 function reg(){
   global $db;
-  #過濾變數
+  
   $_POST['uname'] = $db->real_escape_string($_POST['uname']);
   $_POST['pass'] = $db->real_escape_string($_POST['pass']);
   $_POST['chk_pass'] = $db->real_escape_string($_POST['chk_pass']);
   $_POST['name'] = $db->real_escape_string($_POST['name']);
   $_POST['tel'] = $db->real_escape_string($_POST['tel']);
   $_POST['email'] = $db->real_escape_string($_POST['email']);
+  #加密處理
+  if($_POST['pass'] != $_POST['chk_pass'])die("密碼不一致");
+  $_POST['pass']  = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 
-  #加密
-  if($_POST['pass'] == $_POST['chk_pass']){
-    $_POST['pass'] = password_hash($_POST['pass'], PASSWORD_DEFAULT);//加密  
-  }else{
-    die("密碼不一致");
-  }
-  #寫入語法
-  $sql="INSERT INTO `users` 
-        (`uname`, `pass`, `name`, `tel`, `email`)  
-        VALUES 
-        ('{$_POST['uname']}', '{$_POST['pass']}', '{$_POST['name']}', '{$_POST['tel']}', '{$_POST['email']}');
-  ";
-  #寫入資料庫
-  $db->query($sql) or die($db->error. $sql);
+  $sql="INSERT INTO `users` (`uname`, `pass`, `name`, `tel`, `email`)
+  VALUES ('{$_POST['uname']}', '{$_POST['pass']}', '{$_POST['name']}', '{$_POST['tel']}', '{$_POST['email']}');";
+
+  $db->query($sql) or die($db->error() . $sql);
   $uid = $db->insert_id;
-  return $uid;
+
+
 }
 
 function logout(){
@@ -85,8 +84,9 @@ function logout(){
   setcookie("token", "", time()- 3600 * 24 * 365);
 }
 
-function login_form(){
-  global $smarty; 
+function reg_form(){
+  global $smarty;
+ 
 }
 
 function login(){
@@ -104,11 +104,14 @@ function login(){
       setcookie("token", $token, time()+ 3600 * 24 * 365); 
     }
     return "登入成功";
-  }else{      
+  }else{ 
     return "登入失敗";
   }
 }
  
+function login_form(){
+  global $smarty;
+}
 
 
 
