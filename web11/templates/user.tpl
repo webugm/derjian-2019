@@ -16,37 +16,48 @@
     <script src="<{$xoImgUrl}>bootstrap/bootstrap.min.js"></script>
   </head>
   <body>
-    <{* sweetalert2 *}>
-    <{if $redirect}>
-      <!-- sweetalert2 -->
-      <link rel="stylesheet" href="<{$xoAppUrl}>class/sweetalert2/sweetalert2.min.css">
-      <script src="<{$xoAppUrl}>class/sweetalert2/sweetalert2.min.js"></script>
-      <script>
-        window.onload = function(){
-          Swal.fire({
-            //position: 'top-end',
-            icon: 'success',
-            title: "<{$message}>",
-            showConfirmButton: false,
-            timer: <{$time}>
-          })
-        }    
-      </script>
-    <{/if}>
+    <{* 轉向樣板 *}>
+    <{include file="tpl/redirect.tpl"}>
+  
+    <h1 class="text-center mt-2">育將電腦工作室 後台</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-9">          
 
-    <{if $smarty.session.admin}>
-      <{* 管理員 *}>
-      <{include file="tpl/admin.tpl"}>
-    <{else}>
-      <{* 訪客 *}>
+          <{if $op == "op_list"}>
+            <{include file="tpl/user_list.tpl"}>
 
-      <{if $op=="login_form"}>
-        <{include file="tpl/login_form.tpl"}>
-      <{elseif $op=="reg_form"}>
-        <{include file="tpl/reg_form.tpl"}>
-      <{/if}>
+          <{/if}>
+        </div>
+        <div class="col-sm-3">
 
-    <{/if}>
+          <div class="card" style="width: 18rem;">
+            <div class="card-header">
+              管理員
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <a href="index.php" style="display:block;">首頁</a>
+              </li>
+              <li class="list-group-item">
+                <a href="index.php?op=logout" class="btn-block">登出</a>
+              </li>
+              <li class="list-group-item">
+                <a href="http://localhost/adminer/adminer.php" class="btn-block" target="_blank">資料庫管理</a>
+              </li>
+              
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
 
   </body>
 </html>

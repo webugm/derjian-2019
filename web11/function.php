@@ -95,14 +95,25 @@ function db_filter($var, $title = '', $filter = ''){
   $var = $db->real_escape_string($var);
 
   if($title){
-    if($var === "")redirect_header(_WEB_URL, $title . '為必填！', 3000);
+    if($var === ""){
+      redirect_header("index.php?op=reg_form", $title . '為必填！');
+    }
   }
 
   if ($filter) {
     $var = filter_var($var, $filter);
-    if (!$var) {
-      redirect_header(_WEB_URL, "不合法的{$title}", 3000);
-    }
+    if (!$var) redirect_header("index.php?op=reg_form", "不合法的{$title}", 3000);
   }
   return $var;
+}
+
+/*############################################
+  轉向函數
+############################################*/
+function redirect_header($url = "index.php", $message = '訊息', $time = 3000) {  
+  $_SESSION['redirect'] = true;
+  $_SESSION['message'] = $message;
+  $_SESSION['time'] = $time;
+  header("location:{$url}");//注意前面不可以有輸出
+  exit;
 }
