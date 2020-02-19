@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-19 22:27:27
-  from 'D:\0_course\xampp\xampp\htdocs\web11\templates\tpl\head.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-02-15 03:21:22
+  from 'D:\ugm\xampp\htdocs\web11\templates\tpl\head.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e4da83f7d4690_18328288',
+  'unifunc' => 'content_5e4755a2387a90_03472326',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'fa2ea6b80ba8f2d5c998fbbe46b947e921001266' => 
+    '1c81d9f12f6477d49039367a2a0b1e2549b0696f' => 
     array (
-      0 => 'D:\\0_course\\xampp\\xampp\\htdocs\\web11\\templates\\tpl\\head.tpl',
-      1 => 1582147430,
+      0 => 'D:\\ugm\\xampp\\htdocs\\web11\\templates\\tpl\\head.tpl',
+      1 => 1581733109,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e4da83f7d4690_18328288 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e4755a2387a90_03472326 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light bg-secondary fixed-top py-3" id="mainNav">
@@ -48,14 +48,10 @@ function content_5e4da83f7d4690_18328288 (Smarty_Internal_Template $_smarty_tpl)
             <a class="nav-link js-scroll-trigger" href="index.php?op=contact_form">聯絡我們</a>
           </li>
 
-          <?php if ($_SESSION['user']['kind'] === 1) {?>
+          <?php if ($_SESSION['admin']) {?>
                         <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="user.php">管理員</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="index.php?op=logout">登出</a>
-            </li>
-          <?php } elseif ($_SESSION['user']['kind'] === 0) {?>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="index.php?op=logout">登出</a>
             </li>

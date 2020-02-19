@@ -2,7 +2,7 @@
 /* 引入檔頭，每支程都會引入 */
 require_once 'head.php';
  
-if(!$_SESSION['admin'])redirect_header("index.php", '您沒有權限', 3000);
+if(!$_SESSION['user']['kind'])redirect_header("index.php", '您沒有權限', 3000);
 
 /* 過濾變數，設定預設值 */
 $op = system_CleanVars($_REQUEST, 'op', 'op_list', 'string');
@@ -11,20 +11,20 @@ $uid = system_CleanVars($_REQUEST, 'uid', '', 'int');
  
 /* 程式流程 */
 switch ($op){
-  case "op_form" :
-    op_form($uid);
-    break;
-
-  case "op_update" :
-    $msg = op_update($uid);
-    redirect_header("user.php", $msg, 3000);
-    exit;
- 
   case "op_delete" :
     $msg = op_delete($uid);
     redirect_header("user.php", $msg, 3000);
     exit;
 
+  case "op_update" :
+    $msg = op_update($uid);
+    redirect_header("user.php", $msg, 3000);
+    exit;
+
+  case "op_form" :
+    $msg = op_form($uid);
+    break;
+ 
   default:
     $op = "op_list";
     op_list();
@@ -51,25 +51,21 @@ function op_delete($uid){
   return "會員刪除成功";
 }
 
-/*=======================
-更新會員函式(寫入資料庫)
-=======================*/
-function op_update($uid){
-  global $db;
+function op_update($uid=""){
+  global $db; 
+   
   $_POST['uname'] = db_filter($_POST['uname'], '帳號');
-  $_POST['pass'] = db_filter($_POST['pass'], '');
+  $_POST['pass'] = db_filter($_POST['pass'], '');//密碼
   $_POST['name'] = db_filter($_POST['name'], '姓名');
   $_POST['tel'] = db_filter($_POST['tel'], '電話');
   $_POST['email'] = db_filter($_POST['email'], 'email',FILTER_SANITIZE_EMAIL);
-  $_POST['kind'] = (int)$_POST['kind'];
-  $_POST['uid'] = (int)$_POST['uid'];
-
+  $_POST['kind'] = db_filter($_POST['kind'], '會員狀態');
+  
   $and_col = "";
-  if($_POST['pass']){
+  if($_POST['pass']){    
     $_POST['pass']  = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-    $and_col = "
-      `pass` = '{$_POST['pass']}',
-    ";
+    //更新密碼
+    $and_col = "`pass` = '{$_POST['pass']}',";
   }
 
   $sql="UPDATE `users` SET
@@ -79,42 +75,42 @@ function op_update($uid){
         `tel` = '{$_POST['tel']}',
         `email` = '{$_POST['email']}',
         `kind` = '{$_POST['kind']}'
-        WHERE `uid` = '{$_POST['uid']}';  
+        WHERE `uid` = '{$uid}';  
   ";//die($sql);
-
   $db->query($sql) or die($db->error() . $sql);
   return "會員資料更新成功";
+
 }
 
-/*=============================
-  會員編輯
-===============================*/
 function op_form($uid=""){
-  global $db,$smarty;
+  global $smarty,$db;
+
   if($uid){
-    $sql = "SELECT *
-            FROM `users`
-            WHERE `uid`='{$uid}'
-    ";
+    $sql="SELECT *
+          FROM `users`
+          WHERE `uid` = '{$uid}'
+    ";//die($sql);
+    
     $result = $db->query($sql) or die($db->error() . $sql);
-    $row = $result->fetch_assoc() or die("uid錯誤");
+    $row = $result->fetch_assoc(); 
   }
   $row['uid'] = isset($row['uid']) ? $row['uid'] : "";
   $row['uname'] = isset($row['uname']) ? $row['uname'] : "";
   $row['name'] = isset($row['name']) ? $row['name'] : "";
   $row['tel'] = isset($row['tel']) ? $row['tel'] : "";
   $row['email'] = isset($row['email']) ? $row['email'] : "";
-  $row['kind'] = isset($row['kind']) ? $row['kind'] : "";
-  
-  $smarty->assign("row",$row);  
+  $row['kind'] = isset($row['kind']) ? $row['kind'] : "0";
 
+  $smarty->assign("row",$row);
 }
 
+
 function op_list(){
-  global $smarty,$db;  
+  global $smarty,$db;
+  
   $sql = "SELECT *
           FROM `users`
-  ";
+  ";//die($sql);
 
   $result = $db->query($sql) or die($db->error() . $sql);
   $rows=[];//array();

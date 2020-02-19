@@ -32,29 +32,12 @@ require_once _WEB_PATH.'/sqlConfig.php';
 #引入設定檔
 require_once _WEB_PATH . '/function.php';
 
-$_SESSION['admin'] = isset($_SESSION['admin']) ? $_SESSION['admin'] : false;
-$_SESSION['member'] = isset($_SESSION['member']) ? $_SESSION['member'] : false;
-
+$_SESSION['user']['kind'] = isset($_SESSION['user']['kind']) ? $_SESSION['user']['kind'] : "";
 # 為了cookie使用
-if(!$_SESSION['admin']){
-  $_SESSION['user']['uname']="";
-  $_SESSION['user']['uid']="";
-  $_SESSION['user']['kind']="";
-  $_SESSION['user']['name']="";
-  $_SESSION['user']['tel']="";
-  $_SESSION['user']['email']="";
-  $_SESSION['user']['token']="";
+if($_SESSION['user']['kind'] === ""){
   $_COOKIE['token'] = isset($_COOKIE['token']) ? $_COOKIE['token'] : "";
   $_COOKIE['uname'] = isset($_COOKIE['uname']) ? $_COOKIE['uname'] : "";
-  if(check_user_token($_COOKIE['uname'],$_COOKIE['token'])){
-    if($_SESSION['user']['kind']){
-      $_SESSION['admin'] = true;
-      $_SESSION['member'] = true;
-    }else{
-      $_SESSION['admin'] = false;
-      $_SESSION['member'] = true;
-    }    
-  }
+  checkByUnameToken($_COOKIE['uname'],$_COOKIE['token']);
 }
 
 #轉向用
@@ -69,3 +52,33 @@ $smarty->assign("time",$_SESSION['time']);
 $_SESSION['redirect'] = "";
 $_SESSION['message'] = "";
 $_SESSION['time'] = "";
+
+
+/*=======================
+  用uname與token登入
+=======================*/
+function checkByUnameToken($uname,$token){
+  global $db;
+  $user = getUserByUname($uname); 
+  if($token === $user['token']){
+    $_SESSION['user']['uid'] = (int)$user['uid'];
+    $_SESSION['user']['uname'] = htmlspecialchars($user['uname']);
+    $_SESSION['user']['name'] = htmlspecialchars($user['name']);
+    $_SESSION['user']['tel'] = htmlspecialchars($user['tel']);
+    $_SESSION['user']['email'] = htmlspecialchars($user['email']);
+    $_SESSION['user']['kind'] = (int)$user['kind'];
+    $_SESSION['user']['token'] = htmlspecialchars($user['token']);
+    return true;
+  }else{
+    $_SESSION['user']['uid'] = "";
+    $_SESSION['user']['uname'] = "";
+    $_SESSION['user']['name'] = "";
+    $_SESSION['user']['tel'] = "";
+    $_SESSION['user']['email'] = "";
+    $_SESSION['user']['kind'] = "";
+    $_SESSION['user']['token'] = "";
+    return false;
+  }
+  
+}
+

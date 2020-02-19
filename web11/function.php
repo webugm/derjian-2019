@@ -89,20 +89,20 @@ if (!function_exists("mk_dir")) {
 
 //檢查並傳回欲拿到資料使用的變數
 //$title = '' 則非必填
-function db_filter($var, $title = '', $filter = ''){
+function db_filter($var, $title = '', $filter = '',$url = _WEB_URL){
   global $db;
   #寫入資料庫過濾
   $var = $db->real_escape_string($var);
 
   if($title){
     if($var === ""){
-      redirect_header("index.php?op=reg_form", $title . '為必填！');
+      redirect_header($url, $title . '為必填！');
     }
   }
 
   if ($filter) {
     $var = filter_var($var, $filter);
-    if (!$var) redirect_header("index.php?op=reg_form", "不合法的{$title}", 3000);
+    if (!$var) redirect_header($url, "不合法的{$title}", 3000);
   }
   return $var;
 }
@@ -118,31 +118,16 @@ function redirect_header($url = "index.php", $message = '訊息', $time = 3000) 
   exit;
 }
 
-
-function check_user_token($uname,$token){
-  global $db;
-  $row = getUserByUname($uname);
-  if($token === $row['token']){
-    $row['uname'] = htmlspecialchars($row['uname']);//字串
-    $row['uid'] = (int)$row['uid'];//整數
-    $row['kind'] = (int)$row['kind'];//整數
-    $row['name'] = htmlspecialchars($row['name']);//字串
-    $row['tel'] = htmlspecialchars($row['tel']);//字串
-    $row['email'] = htmlspecialchars($row['email']);//字串
-    $row['token'] = htmlspecialchars($row['token']);//字串 
-    $_SESSION['user'] = $row;
-    return true;
-  }
-  return false;
-}
-
+/*=======================
+  用uname取得user
+=======================*/
 function getUserByUname($uname){
   global $db;
   $sql="SELECT *
         FROM `users`
-        WHERE `uname`='{$uname}'
+        WHERE `uname`='{$uname}'  
   ";
   $result = $db->query($sql) or die($db->error() . $sql);
-  $row = $result->fetch_assoc(); 
+  $row = $result->fetch_assoc();
   return $row;
 }
