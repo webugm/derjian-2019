@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-14 22:35:06
+/* Smarty version 3.1.34-dev-7, created on 2020-02-19 02:01:03
   from 'D:\0_course\xampp\xampp\htdocs\web11\templates\tpl\reg_form.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e47128a2f65e1_67955487',
+  'unifunc' => 'content_5e4c88cfdd25e0_37109702',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '9849b5c76e17f6f7d9eb87416678f95b59dde4b9' => 
     array (
       0 => 'D:\\0_course\\xampp\\xampp\\htdocs\\web11\\templates\\tpl\\reg_form.tpl',
-      1 => 1581716070,
+      1 => 1582037576,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e47128a2f65e1_67955487 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e4c88cfdd25e0_37109702 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <style>
   .box{
@@ -44,35 +44,35 @@ function content_5e47128a2f65e1_67955487 (Smarty_Internal_Template $_smarty_tpl)
           <!--密碼-->              
           <div class="col-sm-4">
             <div class="form-group">
-              <label>密碼<span class="text-danger">*</span class="text-danger"></label>
+              <label>密碼<span class="text-danger">*</span></label>
               <input type="password" class="form-control" name="pass" id="pass" value="">
             </div>
           </div>         
           <!--確認密碼-->              
           <div class="col-sm-4">
             <div class="form-group">
-              <label>確認密碼<span class="text-danger">*</span class="text-danger"></label>
+              <label>確認密碼<span class="text-danger">*</span></label>
               <input type="password" class="form-control" name="chk_pass" id="chk_pass" value="" >
             </div>
           </div>         
           <!--姓名-->              
           <div class="col-sm-6">
             <div class="form-group">
-              <label>姓名<span class="text-danger">*</span class="text-danger"></label>
+              <label>姓名<span class="text-danger">*</span></label>
               <input type="text" class="form-control" name="name" id="name" value="">
             </div>
           </div>         
           <!--電話-->              
           <div class="col-sm-6">
             <div class="form-group">
-              <label>電話<span class="text-danger">*</span class="text-danger"></label>
+              <label>電話<span class="text-danger">*</span></label>
               <input type="text" class="form-control" name="tel" id="tel" value="">
             </div>
           </div>             
           <!--信箱-->              
           <div class="col-sm-12">
             <div class="form-group">
-              <label>信箱<span class="text-danger">*</span class="text-danger"></label>
+              <label>信箱<span class="text-danger">*</span></label>
               <input type="text" class="form-control" name="email" id="email" value="">
             </div>
           </div> 

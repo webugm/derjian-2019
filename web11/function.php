@@ -117,3 +117,32 @@ function redirect_header($url = "index.php", $message = '訊息', $time = 3000) 
   header("location:{$url}");//注意前面不可以有輸出
   exit;
 }
+
+
+function check_user_token($uname,$token){
+  global $db;
+  $row = getUserByUname($uname);
+  if($token === $row['token']){
+    $row['uname'] = htmlspecialchars($row['uname']);//字串
+    $row['uid'] = (int)$row['uid'];//整數
+    $row['kind'] = (int)$row['kind'];//整數
+    $row['name'] = htmlspecialchars($row['name']);//字串
+    $row['tel'] = htmlspecialchars($row['tel']);//字串
+    $row['email'] = htmlspecialchars($row['email']);//字串
+    $row['token'] = htmlspecialchars($row['token']);//字串 
+    $_SESSION['user'] = $row;
+    return true;
+  }
+  return false;
+}
+
+function getUserByUname($uname){
+  global $db;
+  $sql="SELECT *
+        FROM `users`
+        WHERE `uname`='{$uname}'
+  ";
+  $result = $db->query($sql) or die($db->error() . $sql);
+  $row = $result->fetch_assoc(); 
+  return $row;
+}

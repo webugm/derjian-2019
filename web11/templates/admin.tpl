@@ -7,6 +7,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<{$xoImgUrl}>bootstrap/bootstrap.min.css">
+    
+    <!-- Font Awesome Icons -->
+    <link href="<{$xoImgUrl}>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
     <title>會員管理</title>
     <!-- Optional JavaScript -->
@@ -18,16 +21,16 @@
   <body>
     <{* 轉向樣板 *}>
     <{include file="tpl/redirect.tpl"}>
-  
+
     <h1 class="text-center mt-2">育將電腦工作室 後台</h1>
     <div class="container">
       <div class="row">
-        <div class="col-sm-9">          
-
-          <{if $op == "op_list"}>
-            <{include file="tpl/user_list.tpl"}>
-
+        <div class="col-sm-9">
+          <{if $WEB.file_name == "user.php"}>
+            <{include file="tpl/user.tpl"}>
           <{/if}>
+          
+
         </div>
         <div class="col-sm-3">
 
@@ -52,12 +55,5 @@
         </div>
       </div>
     </div>
-
-
-
-
-
-
-
   </body>
 </html>

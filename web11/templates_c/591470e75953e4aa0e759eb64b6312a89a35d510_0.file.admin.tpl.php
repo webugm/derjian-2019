@@ -1,28 +1,28 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-14 23:46:28
-  from 'D:\0_course\xampp\xampp\htdocs\web11\templates\user.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-02-18 15:05:15
+  from 'D:\0_course\xampp\xampp\htdocs\web11\templates\admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e4723440ea701_36513981',
+  'unifunc' => 'content_5e4bef1b29aca5_80812079',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '8db8fb3d79231e443d26065b7c47b7b8d4a66cf8' => 
+    '591470e75953e4aa0e759eb64b6312a89a35d510' => 
     array (
-      0 => 'D:\\0_course\\xampp\\xampp\\htdocs\\web11\\templates\\user.tpl',
-      1 => 1581720384,
+      0 => 'D:\\0_course\\xampp\\xampp\\htdocs\\web11\\templates\\admin.tpl',
+      1 => 1582034664,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
     'file:tpl/redirect.tpl' => 1,
-    'file:tpl/user_list.tpl' => 1,
+    'file:tpl/user.tpl' => 1,
   ),
 ),false)) {
-function content_5e4723440ea701_36513981 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e4bef1b29aca5_80812079 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="en">
   <head>
@@ -33,6 +33,10 @@ function content_5e4723440ea701_36513981 (Smarty_Internal_Template $_smarty_tpl)
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['xoImgUrl']->value;?>
 bootstrap/bootstrap.min.css">
+    
+    <!-- Font Awesome Icons -->
+    <link href="<?php echo $_smarty_tpl->tpl_vars['xoImgUrl']->value;?>
+vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
     <title>會員管理</title>
     <!-- Optional JavaScript -->
@@ -53,17 +57,17 @@ bootstrap/bootstrap.min.js"><?php echo '</script'; ?>
   <body>
         <?php $_smarty_tpl->_subTemplateRender("file:tpl/redirect.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-  
+
     <h1 class="text-center mt-2">育將電腦工作室 後台</h1>
     <div class="container">
       <div class="row">
-        <div class="col-sm-9">          
-
-          <?php if ($_smarty_tpl->tpl_vars['op']->value == "op_list") {?>
-            <?php $_smarty_tpl->_subTemplateRender("file:tpl/user_list.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+        <div class="col-sm-9">
+          <?php if ($_smarty_tpl->tpl_vars['WEB']->value['file_name'] == "user.php") {?>
+            <?php $_smarty_tpl->_subTemplateRender("file:tpl/user.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-
           <?php }?>
+          
+
         </div>
         <div class="col-sm-3">
 
@@ -88,13 +92,6 @@ bootstrap/bootstrap.min.js"><?php echo '</script'; ?>
         </div>
       </div>
     </div>
-
-
-
-
-
-
-
   </body>
 </html><?php }
 }

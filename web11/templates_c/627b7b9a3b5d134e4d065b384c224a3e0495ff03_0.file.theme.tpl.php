@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-14 20:48:47
+/* Smarty version 3.1.34-dev-7, created on 2020-02-18 15:14:12
   from 'D:\0_course\xampp\xampp\htdocs\web11\templates\theme.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e46f99f3a9f64_81248874',
+  'unifunc' => 'content_5e4bf134a211b1_69748965',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '627b7b9a3b5d134e4d065b384c224a3e0495ff03' => 
     array (
       0 => 'D:\\0_course\\xampp\\xampp\\htdocs\\web11\\templates\\theme.tpl',
-      1 => 1581673522,
+      1 => 1581749562,
       2 => 'file',
     ),
   ),
@@ -29,7 +29,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:tpl/footer.tpl' => 1,
   ),
 ),false)) {
-function content_5e46f99f3a9f64_81248874 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e4bf134a211b1_69748965 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -70,6 +70,7 @@ css/creative.min.css" rel="stylesheet">
 ?>
   
   <?php if ($_smarty_tpl->tpl_vars['op']->value == "contact_form") {?>
+    
     <?php $_smarty_tpl->_subTemplateRender("file:tpl/contact_form.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
   <?php } elseif ($_smarty_tpl->tpl_vars['op']->value == "ok") {?> 

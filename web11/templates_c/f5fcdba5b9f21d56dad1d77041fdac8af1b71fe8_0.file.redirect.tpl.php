@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-14 20:48:47
+/* Smarty version 3.1.34-dev-7, created on 2020-02-18 15:05:15
   from 'D:\0_course\xampp\xampp\htdocs\web11\templates\tpl\redirect.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e46f99f68c120_53071030',
+  'unifunc' => 'content_5e4bef1b391ad9_14346970',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f5fcdba5b9f21d56dad1d77041fdac8af1b71fe8' => 
     array (
       0 => 'D:\\0_course\\xampp\\xampp\\htdocs\\web11\\templates\\tpl\\redirect.tpl',
-      1 => 1581673522,
+      1 => 1581749562,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e46f99f68c120_53071030 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e4bef1b391ad9_14346970 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
     <?php if ($_smarty_tpl->tpl_vars['redirect']->value) {?>
     <!-- sweetalert2 -->

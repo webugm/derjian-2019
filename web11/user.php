@@ -1,16 +1,29 @@
 <?php
 /* 引入檔頭，每支程都會引入 */
 require_once 'head.php';
-#權限檢查
+ 
 if(!$_SESSION['admin'])redirect_header("index.php", '您沒有權限', 3000);
 
 /* 過濾變數，設定預設值 */
 $op = system_CleanVars($_REQUEST, 'op', 'op_list', 'string');
-$sn = system_CleanVars($_REQUEST, 'sn', '', 'int');
+$uid = system_CleanVars($_REQUEST, 'uid', '', 'int');
 // echo $op;die();
  
 /* 程式流程 */
 switch ($op){
+  case "op_form" :
+    op_form($uid);
+    break;
+
+  case "op_update" :
+    $msg = op_update($uid);
+    redirect_header("user.php", $msg, 3000);
+    exit;
+ 
+  case "op_delete" :
+    $msg = op_delete($uid);
+    redirect_header("user.php", $msg, 3000);
+    exit;
 
   default:
     $op = "op_list";
@@ -22,35 +35,100 @@ $smarty->assign("WEB", $WEB);
 $smarty->assign("op", $op);
  
 /*---- 程式結尾-----*/
-$smarty->display('user.tpl');
+$smarty->display('admin.tpl');
  
 /*---- 函數區-----*/
 
+/*=======================
+刪除會員函式
+=======================*/
+function op_delete($uid){
+  global $db;
+  $sql="DELETE FROM `users`
+        WHERE `uid` = '{$uid}';
+  ";
+  $db->query($sql) or die($db->error() . $sql);
+  return "會員刪除成功";
+}
 
- 
-function op_list(){
-  global $smarty,$db;
-  $sql="SELECT *
-        FROM `users`
-        ";
+/*=======================
+更新會員函式(寫入資料庫)
+=======================*/
+function op_update($uid){
+  global $db;
+  $_POST['uname'] = db_filter($_POST['uname'], '帳號');
+  $_POST['pass'] = db_filter($_POST['pass'], '');
+  $_POST['name'] = db_filter($_POST['name'], '姓名');
+  $_POST['tel'] = db_filter($_POST['tel'], '電話');
+  $_POST['email'] = db_filter($_POST['email'], 'email',FILTER_SANITIZE_EMAIL);
+  $_POST['kind'] = (int)$_POST['kind'];
+  $_POST['uid'] = (int)$_POST['uid'];
+
+  $and_col = "";
+  if($_POST['pass']){
+    $_POST['pass']  = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+    $and_col = "
+      `pass` = '{$_POST['pass']}',
+    ";
+  }
+
+  $sql="UPDATE `users` SET
+        `uname` = '{$_POST['uname']}',
+        {$and_col}
+        `name` = '{$_POST['name']}',
+        `tel` = '{$_POST['tel']}',
+        `email` = '{$_POST['email']}',
+        `kind` = '{$_POST['kind']}'
+        WHERE `uid` = '{$_POST['uid']}';  
+  ";//die($sql);
+
+  $db->query($sql) or die($db->error() . $sql);
+  return "會員資料更新成功";
+}
+
+/*=============================
+  會員編輯
+===============================*/
+function op_form($uid=""){
+  global $db,$smarty;
+  if($uid){
+    $sql = "SELECT *
+            FROM `users`
+            WHERE `uid`='{$uid}'
+    ";
+    $result = $db->query($sql) or die($db->error() . $sql);
+    $row = $result->fetch_assoc() or die("uid錯誤");
+  }
+  $row['uid'] = isset($row['uid']) ? $row['uid'] : "";
+  $row['uname'] = isset($row['uname']) ? $row['uname'] : "";
+  $row['name'] = isset($row['name']) ? $row['name'] : "";
+  $row['tel'] = isset($row['tel']) ? $row['tel'] : "";
+  $row['email'] = isset($row['email']) ? $row['email'] : "";
+  $row['kind'] = isset($row['kind']) ? $row['kind'] : "";
   
-  $result = $db->query($sql) or die($db->error() . $sql); 
-  $rows=[];
+  $smarty->assign("row",$row);  
+
+}
+
+function op_list(){
+  global $smarty,$db;  
+  $sql = "SELECT *
+          FROM `users`
+  ";
+
+  $result = $db->query($sql) or die($db->error() . $sql);
+  $rows=[];//array();
   while($row = $result->fetch_assoc()){
-    #過濾資料 數字 (int) 字串 htmlspecialchars($row['xxx'], ENT_QUOTES);
-    # $row[''] = (int)$row[''];
-    # $row[''] = htmlspecialchars($row[''], ENT_QUOTES);
-    $row['uid'] = (int)$row['uid'];
-    $row['uname'] = htmlspecialchars($row['uname'], ENT_QUOTES);
-    $row['pass'] = htmlspecialchars($row['pass'], ENT_QUOTES);
-    $row['name'] = htmlspecialchars($row['name'], ENT_QUOTES);
-    $row['tel'] = htmlspecialchars($row['tel'], ENT_QUOTES);
-    $row['email'] = htmlspecialchars($row['email'], ENT_QUOTES);
-    $row['kind'] = (int)$row['uid'];
-    $row['token'] = htmlspecialchars($row['token'], ENT_QUOTES);
+    $row['uname'] = htmlspecialchars($row['uname']);//字串
+    $row['uid'] = (int)$row['uid'];//整數
+    $row['kind'] = (int)$row['kind'];//整數
+    $row['name'] = htmlspecialchars($row['name']);//字串
+    $row['tel'] = htmlspecialchars($row['tel']);//字串
+    $row['email'] = htmlspecialchars($row['email']);//字串    
     $rows[] = $row;
-    $smarty->assign("rows",$rows);
-  }     
+  }
+  $smarty->assign("rows",$rows);  
+
 }
 
 

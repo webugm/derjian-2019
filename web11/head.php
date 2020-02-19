@@ -33,13 +33,27 @@ require_once _WEB_PATH.'/sqlConfig.php';
 require_once _WEB_PATH . '/function.php';
 
 $_SESSION['admin'] = isset($_SESSION['admin']) ? $_SESSION['admin'] : false;
+$_SESSION['member'] = isset($_SESSION['member']) ? $_SESSION['member'] : false;
 
 # 為了cookie使用
 if(!$_SESSION['admin']){
+  $_SESSION['user']['uname']="";
+  $_SESSION['user']['uid']="";
+  $_SESSION['user']['kind']="";
+  $_SESSION['user']['name']="";
+  $_SESSION['user']['tel']="";
+  $_SESSION['user']['email']="";
+  $_SESSION['user']['token']="";
   $_COOKIE['token'] = isset($_COOKIE['token']) ? $_COOKIE['token'] : "";
-  $_COOKIE['name'] = isset($_COOKIE['name']) ? $_COOKIE['name'] : "";
-  if($_COOKIE['name'] == "admin" and $_COOKIE['token'] == "xxxxxx"){
-    $_SESSION['admin'] = true;
+  $_COOKIE['uname'] = isset($_COOKIE['uname']) ? $_COOKIE['uname'] : "";
+  if(check_user_token($_COOKIE['uname'],$_COOKIE['token'])){
+    if($_SESSION['user']['kind']){
+      $_SESSION['admin'] = true;
+      $_SESSION['member'] = true;
+    }else{
+      $_SESSION['admin'] = false;
+      $_SESSION['member'] = true;
+    }    
   }
 }
 
