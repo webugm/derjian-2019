@@ -1,57 +1,58 @@
 <{if $op=="op_list"}>
-	<table class="table table-striped table-bordered table-hover table-sm">
-		<thead>
-			<tr>
-				<th scope="col">帳號</th>
-				<th scope="col">姓名</th>
-				<th scope="col">電話</th>
-				<th scope="col">EMAIL</th>
-				<th scope="col">狀態</th>
-				<th scope="col">功能</th>
-			</tr>
-		</thead>
-		<tbody>
-			<{foreach $rows as $row}>
-				<tr>
-					<td><{$row.uname}></td>
-					<td><{$row.name}></td>
-					<td><{$row.tel}></td>
-					<td><{$row.email}></td>
-					<td><{if $row.kind}><i class="fas fa-user-check"></i><{/if}></td>
-					<td>
-						<a href="user.php?op=op_form&uid=<{$row.uid}>"><i class="far fa-edit"></i></a>
-						<a href="javascript:void(0)" onclick="op_delete(<{$row.uid}>);"><i class="far fa-trash-alt"></i></a>
-					</td>
-				</tr>
-			<{foreachelse}>
-				<tr>
-					<td colspan=6>目前沒有資料</td>
-				</tr>
-			<{/foreach}>
-		</tbody>
-	</table>
-	
-	<!-- sweetalert2 -->
-	<link rel="stylesheet" href="<{$xoAppUrl}>class/sweetalert2/sweetalert2.min.css">
-	<script src="<{$xoAppUrl}>class/sweetalert2/sweetalert2.min.js"></script>
-	<script>        
-		function op_delete(uid){
-			Swal.fire({
-				title: '你確定嗎？',
-				text: "您將無法還原！",
-				icon: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: '是的，刪除它！'
-			}).then((result) => {
-				if (result.value) {
-					//確定要刪除的動作
-					document.location.href="user.php?op=op_delete&uid="+uid;
-				}
-			})
-		}        
-	</script>
+    <table class="table table-striped table-bordered table-hover table-sm">
+        <thead>
+        <tr>
+            <th scope="col">帳號</th>
+            <th scope="col">姓名</th>
+            <th scope="col">電話</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">狀態</th>
+            <th scope="col">功能</th>
+        </tr>
+        </thead>
+        <tbody>
+            <{foreach $rows as $row}>
+                <tr>
+                    <td><{$row.uname}></td>
+                    <td><{$row.name}></td>
+                    <td><{$row.tel}></td>
+                    <td><{$row.email}></td>
+                    <td><{if $row.kind}><i class="fas fa-user-check"></i><{/if}></td>
+                    <td>
+                        <a href="user.php?op=op_form&uid=<{$row.uid}>"><i class="far fa-edit"></i></a>
+                        <a href="javascript:void(0)" onclick="op_delete(<{$row.uid}>);"><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            <{foreachelse}>
+                <tr>
+                    <td colspan=6>目前沒有資料</td>
+                </tr>
+            <{/foreach}>
+
+        </tbody>
+    </table>
+    
+    <!-- sweetalert2 -->
+    <link rel="stylesheet" href="<{$xoAppUrl}>class/sweetalert2/sweetalert2.min.css">
+    <script src="<{$xoAppUrl}>class/sweetalert2/sweetalert2.min.js"></script>
+    <script>
+        function op_delete(uid){
+            Swal.fire({
+                title: '你確定嗎？',
+                text: "您將無法還原！",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '是的，刪除它！',
+                cancelButtonText: '取消'
+                }).then((result) => {
+                if (result.value) {
+                    document.location.href="user.php?op=op_delete&uid="+uid;
+                }
+            })
+        }
+    </script>
 <{/if}>
 
 <{if $op=="op_form"}>
@@ -127,42 +128,46 @@
         </style>
         <script>
             $(function(){
-                $("#myForm").validate({
-                    submitHandler: function(form) {
-                        form.submit();
-                    },
-                    rules: {
-                        'uname' : {
-                            required: true
-                        },
-                        'name' : {
-                            required: true
-                        },
-                        'tel' : {
-                            required: true
-                        },
-                        'email' : {
-                            required: true,
-                            email:true
-                        }
-                    },
-                    messages: {
-                        'uname' : {
-                            required: "必填"
-                        },
-                        'name' : {
-                            required: "必填"
-                        },
-                        'tel' : {
-                            required: "必填"
-                        },
-                        'email' : {
-                            required: "必填",
-                            email: "請填正確email"
-                        }
 
+            });
+            $(function(){
+            $("#myForm").validate({
+                submitHandler: function(form) {
+                    form.submit();
+                },
+                rules: {
+                    'uname' : {
+                        required: true
+                    },
+                    'name' : {
+                        required: true
+                    },
+                    'tel' : {
+                        required: true
+                    },
+                    'email' : {
+                        required: true,
+                        email:true
                     }
-                });
+                },
+                messages: {
+                    'uname' : {
+                        required: "必填"
+                    },
+                    'name' : {
+                        required: "必填"
+                    },
+                    'tel' : {
+                        required: "必填"
+                    },
+                    'email' : {
+                        required: "必填",
+                        email: "請填正確email"
+                    }
+
+                }
+            });
+
             });
         </script>
         

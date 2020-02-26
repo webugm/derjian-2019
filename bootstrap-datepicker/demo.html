@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>bootstrap-datepicker</title>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>bootstrap-datepicker</h1>
+      <div class="row">
+        <!-- bootstrap-datepicker -->
+        <link rel="stylesheet" href="bootstrap-datepicker.min.css">
+        <script src="bootstrap-datepicker.min.js"></script>
+        <script src="bootstrap-datepicker.zh-TW.min.js"></script>
+        
+        <!--日期-->              
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>日期</label>
+            <input type="text" class="form-control" name="date" id="date" value="2020-02-25 19:00:00" data-format="yyyy-mm-dd HH:mm:ss ">
+          </div>
+        </div>  
+        <script>
+          /*
+          yyyy-mm-dd
+    yyyy-mm-dd hh:ii
+    yyyy-mm-dd hh:ii:ss
+          */
+          $(function(){
+            $('#date').datepicker({
+              format: "dd/MM/yyyy hh:mm:ss",
+              autoclose: true,
+              startDate: "today",
+              clearBtn: true,
+              calendarWeeks: true,
+              todayHighlight: true,
+              language: 'zh-TW'
+            });
+          });
+        </script>   
+
+      </div>
+
+    </div>
+
+  </body>
+</html>

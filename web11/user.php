@@ -2,7 +2,7 @@
 /* 引入檔頭，每支程都會引入 */
 require_once 'head.php';
  
-if(!$_SESSION['user']['kind'])redirect_header("index.php", '您沒有權限', 3000);
+if($_SESSION['user']['kind'] !== 1)redirect_header("index.php", '您沒有權限', 3000);
 
 /* 過濾變數，設定預設值 */
 $op = system_CleanVars($_REQUEST, 'op', 'op_list', 'string');
@@ -38,17 +38,13 @@ $smarty->assign("op", $op);
 $smarty->display('admin.tpl');
  
 /*---- 函數區-----*/
-
-/*=======================
-刪除會員函式
-=======================*/
 function op_delete($uid){
-  global $db;
+  global $db; 
   $sql="DELETE FROM `users`
-        WHERE `uid` = '{$uid}';
+        WHERE `uid` = '{$uid}'
   ";
   $db->query($sql) or die($db->error() . $sql);
-  return "會員刪除成功";
+  return "會員資料刪除成功";
 }
 
 function op_update($uid=""){

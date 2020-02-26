@@ -117,17 +117,3 @@ function redirect_header($url = "index.php", $message = '訊息', $time = 3000) 
   header("location:{$url}");//注意前面不可以有輸出
   exit;
 }
-
-/*=======================
-  用uname取得user
-=======================*/
-function getUserByUname($uname){
-  global $db;
-  $sql="SELECT *
-        FROM `users`
-        WHERE `uname`='{$uname}'  
-  ";
-  $result = $db->query($sql) or die($db->error() . $sql);
-  $row = $result->fetch_assoc();
-  return $row;
-}

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-19 20:10:14
+/* Smarty version 3.1.34-dev-7, created on 2020-02-25 03:21:23
   from 'D:\0_course\xampp\xampp\htdocs\web11\templates\admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e4d8816e7b5d3_15846389',
+  'unifunc' => 'content_5e5484a35b8b69_54185123',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '591470e75953e4aa0e759eb64b6312a89a35d510' => 
     array (
       0 => 'D:\\0_course\\xampp\\xampp\\htdocs\\web11\\templates\\admin.tpl',
-      1 => 1582102995,
+      1 => 1582597203,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,10 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     'file:tpl/redirect.tpl' => 1,
     'file:tpl/user.tpl' => 1,
+    'file:tpl/prod.tpl' => 1,
   ),
 ),false)) {
-function content_5e4d8816e7b5d3_15846389 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e5484a35b8b69_54185123 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!doctype html>
 <html lang="en">
   <head>
@@ -64,6 +65,9 @@ bootstrap/bootstrap.min.js"><?php echo '</script'; ?>
           <?php if ($_smarty_tpl->tpl_vars['WEB']->value['file_name'] == "user.php") {?>
             <?php $_smarty_tpl->_subTemplateRender("file:tpl/user.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
+          <?php } elseif ($_smarty_tpl->tpl_vars['WEB']->value['file_name'] == "prod.php") {?>
+            <?php $_smarty_tpl->_subTemplateRender("file:tpl/prod.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
           <?php }?>
           
 
@@ -80,6 +84,12 @@ bootstrap/bootstrap.min.js"><?php echo '</script'; ?>
               </li>
               <li class="list-group-item">
                 <a href="index.php?op=logout" class="btn-block">登出</a>
+              </li>
+              <li class="list-group-item">
+                <a href="user.php" class="btn-block">會員管理</a>
+              </li>
+              <li class="list-group-item">
+                <a href="prod.php" class="btn-block">商品管理</a>
               </li>
               <li class="list-group-item">
                 <a href="http://localhost/adminer/adminer.php" class="btn-block" target="_blank">資料庫管理</a>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-19 21:53:20
+/* Smarty version 3.1.34-dev-7, created on 2020-02-24 02:43:24
   from 'D:\0_course\xampp\xampp\htdocs\web11\templates\tpl\user.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e4da040da9877_66547887',
+  'unifunc' => 'content_5e532a3cdc90c1_63728171',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4fe92dbdf21e33a113698fe099b2376dfc79afc5' => 
     array (
       0 => 'D:\\0_course\\xampp\\xampp\\htdocs\\web11\\templates\\tpl\\user.tpl',
-      1 => 1582145595,
+      1 => 1582145637,
       2 => 'file',
     ),
   ),
@@ -20,10 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e4da040da9877_66547887 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e532a3cdc90c1_63728171 (Smarty_Internal_Template $_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['op']->value == "op_list") {?>
-	<div>user.kind = <?php echo $_SESSION['user']['kind'];?>
-</div>
 	<table class="table table-striped table-bordered table-hover table-sm">
 		<thead>
 			<tr>

@@ -69,63 +69,64 @@ function reg_form(){
 
 }
 
-
-/*=======================
-  用uname與pass登入
-=======================*/
-function checkByUnamePass($uname,$pass){
+function login(){
   global $db;
-  $user = getUserByUname($uname);  
-  if(password_verify($pass, $user['pass'])){
-    $_SESSION['user']['uid'] = (int)$user['uid'];
-    $_SESSION['user']['uname'] = htmlspecialchars($user['uname']);
-    $_SESSION['user']['name'] = htmlspecialchars($user['name']);
-    $_SESSION['user']['tel'] = htmlspecialchars($user['tel']);
-    $_SESSION['user']['email'] = htmlspecialchars($user['email']);
-    $_SESSION['user']['kind'] = (int)$user['kind'];
-    $_SESSION['user']['token'] = htmlspecialchars($user['token']);
-    return true;
-  }else{
+  $_POST['uname'] = db_filter($_POST['uname'], '帳號');
+  $_POST['pass'] = db_filter($_POST['pass'], '密碼');
+
+  $sql="SELECT *
+        FROM `users`
+        WHERE `uname` = '{$_POST['uname']}'
+  ";
+
+  $result = $db->query($sql) or die($db->error() . $sql);
+  $row = $result->fetch_assoc() or redirect_header("index.php", "帳號輸入錯誤" , 3000);
+  
+  $row['uname'] = htmlspecialchars($row['uname']);//字串
+  $row['uid'] = (int)$row['uid'];//整數
+  $row['kind'] = (int)$row['kind'];//整數
+  $row['name'] = htmlspecialchars($row['name']);//字串
+  $row['tel'] = htmlspecialchars($row['tel']);//字串
+  $row['email'] = htmlspecialchars($row['email']);//字串 
+  $row['pass'] = htmlspecialchars($row['pass']);//字串 
+  $row['token'] = htmlspecialchars($row['token']);//字串
+
+  if(password_verify($_POST['pass'], $row['pass'])){
+    //登入成功
+    $_SESSION['user']['uid'] = $row['uid'];
+    $_SESSION['user']['uname'] = $row['uname'];
+    $_SESSION['user']['name'] = $row['name'];
+    $_SESSION['user']['tel'] = $row['tel'];
+    $_SESSION['user']['email'] = $row['email'];
+    $_SESSION['user']['kind'] = $row['kind'];
+    
+    $_POST['remember'] = isset($_POST['remember']) ? $_POST['remember'] : "";
+    
+    if($_POST['remember']){
+      setcookie("uname",$row['uname'], time()+ 3600 * 24 * 365); 
+      setcookie("token", $row['token'], time()+ 3600 * 24 * 365); 
+    }
+    return "登入成功";
+  }else{    
     $_SESSION['user']['uid'] = "";
     $_SESSION['user']['uname'] = "";
     $_SESSION['user']['name'] = "";
     $_SESSION['user']['tel'] = "";
     $_SESSION['user']['email'] = "";
     $_SESSION['user']['kind'] = "";
-    $_SESSION['user']['token'] = "";
-    return false;
-  }
-  
-}
 
-function login(){
-  global $db;
-  #過濾變數  
-  $_POST['uname'] = db_filter($_POST['uname'], '帳號');
-  $_POST['pass'] = db_filter($_POST['pass'], '密碼');
-
-  if(checkByUnamePass($_POST['uname'],$_POST['pass'])){
-    $_POST['remember'] = isset($_POST['remember']) ? $_POST['remember'] : "";
-    
-    if($_POST['remember']){
-      setcookie("uname", $_SESSION['user']['uname'], time()+ 3600 * 24 * 365); 
-      setcookie("token", $_SESSION['user']['token'], time()+ 3600 * 24 * 365); 
-    }
-    return "登入成功";
-  }else{ 
     return "登入失敗";
   }
 }
 
-function logout(){
-  
+function logout(){   
   $_SESSION['user']['uid'] = "";
   $_SESSION['user']['uname'] = "";
   $_SESSION['user']['name'] = "";
   $_SESSION['user']['tel'] = "";
   $_SESSION['user']['email'] = "";
   $_SESSION['user']['kind'] = "";
-  $_SESSION['user']['token'] = "";
+  
   setcookie("uname", "", time()- 3600 * 24 * 365); 
   setcookie("token", "", time()- 3600 * 24 * 365);
 }
