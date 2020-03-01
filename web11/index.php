@@ -14,6 +14,12 @@ switch ($op){
     redirect_header("index.php", '註冊成功', 3000);
     exit;
 
+
+  case "addCart" :
+    $msg = addCart($sn);
+    redirect_header("index.php#services", $msg, 3000);
+    exit;
+
   case "logout" :
     $msg = logout();
     //(轉向頁面,訊息,時間)
@@ -44,6 +50,7 @@ switch ($op){
 
   default:
     $op = "op_list";
+    op_list();
     break;  
 }
   /*---- 將變數送至樣版----*/
@@ -58,6 +65,10 @@ switch ($op){
 $smarty->display('theme.tpl');
 
 //----函數區
+function addCart($sn){
+  $_SESSION['cart'][$sn]=1;
+  return "商品已加入購物中";
+}
 function contact_form(){
 
 }
@@ -162,6 +173,40 @@ function reg(){
   $db->query($sql) or die($db->error() . $sql);
   $uid = $db->insert_id;
 
+
+}
+
+function op_list(){
+  global $smarty,$db;
+  
+  $sql = "SELECT *
+          FROM `prods`
+          WHERE `enable`='1'
+          ORDER BY `date` desc
+  ";//die($sql);
+
+  #---分頁套件(原始$sql 不要設 limit)
+  include_once _WEB_PATH."/class/PageBar/PageBar.php";
+  $PageBar = getPageBar($db, $sql, 10, 10);
+  $bar     = $PageBar['bar'];
+  $sql     = $PageBar['sql'];
+  $total   = $PageBar['total'];
+  $smarty->assign("bar",$bar);  
+  #---分頁套件(end)
+
+  $result = $db->query($sql) or die($db->error() . $sql);
+  $rows=[];//array();
+  while($row = $result->fetch_assoc()){    
+    $row['sn'] = (int)$row['sn'];//分類
+    $row['title'] = htmlspecialchars($row['title']);//標題
+    //$row['kind_sn'] = (int)$row['kind_sn'];//分類
+    $row['price'] = (int)$row['price'];//價格
+    //$row['enable'] = (int)$row['enable'];//狀態
+    //$row['counter'] = (int)$row['counter'];//計數
+    $row['prod'] = getFilesByKindColsnSort("prod",$row['sn']);  
+    $rows[] = $row;
+  }
+  $smarty->assign("rows",$rows);  
 
 }
 

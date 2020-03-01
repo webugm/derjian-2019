@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-28 19:41:11
+/* Smarty version 3.1.34-dev-7, created on 2020-03-02 02:45:40
   from 'D:\0_course\xampp\xampp\htdocs\web11\templates\tpl\body.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e58fc571399d3_17847490',
+  'unifunc' => 'content_5e5c02d42f39d9_53874106',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1d9e4e4f82477419ee14c3a2e22eb66493912b18' => 
     array (
       0 => 'D:\\0_course\\xampp\\xampp\\htdocs\\web11\\templates\\tpl\\body.tpl',
-      1 => 1582890068,
+      1 => 1583088313,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e58fc571399d3_17847490 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e5c02d42f39d9_53874106 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <style>
   .carousel-item {
@@ -105,43 +105,78 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </div>
   </section>
 
-  <!-- Services Section -->
+  <!-- prod list -->
   <section class="page-section" id="services">
     <div class="container">
-      <h2 class="text-center mt-0">At Your Service</h2>
+      <h2 class="text-center mt-0">點餐</h2>
       <hr class="divider my-4">
       <div class="row">
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="mt-5">
-            <i class="fas fa-4x fa-gem text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Sturdy Themes</h3>
-            <p class="text-muted mb-0">Our themes are updated regularly to keep them bug free!</p>
+        
+        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['rows']->value, 'row');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
+?>
+            
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card h-100">
+              <a href="#">
+                <img class="card-img-top" src="<?php echo $_smarty_tpl->tpl_vars['row']->value['prod'];?>
+" alt="<?php echo $_smarty_tpl->tpl_vars['row']->value['title'];?>
+">
+              </a>
+              <div class="card-body text-center">
+                <h4 class="card-title">
+                  <a href="#"><?php echo $_smarty_tpl->tpl_vars['row']->value['title'];?>
+：<?php echo $_smarty_tpl->tpl_vars['row']->value['price'];?>
+元</a>
+                </h4>
+                
+                <a href="javascript:void(0)" onclick="addCart(<?php echo $_smarty_tpl->tpl_vars['row']->value['sn'];?>
+);">加入購物車</a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="mt-5">
-            <i class="fas fa-4x fa-laptop-code text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Up to Date</h3>
-            <p class="text-muted mb-0">All dependencies are kept current to keep things fresh.</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="mt-5">
-            <i class="fas fa-4x fa-globe text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Ready to Publish</h3>
-            <p class="text-muted mb-0">You can use this design as is, or you can make changes!</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="mt-5">
-            <i class="fas fa-4x fa-heart text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Made with Love</h3>
-            <p class="text-muted mb-0">Is it really open source if it's not made with love?</p>
-          </div>
-        </div>
+        <?php
+}
+} else {
+?>
+        <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+      
+
       </div>
     </div>
   </section>
+  
+    <!-- sweetalert2 -->
+    <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['xoAppUrl']->value;?>
+class/sweetalert2/sweetalert2.min.css">
+    <?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['xoAppUrl']->value;?>
+class/sweetalert2/sweetalert2.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+>
+      function addCart(sn){
+        Swal.fire({
+          title: '你確定嗎？',
+          text: "您將無法還原！",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: '是的，刪除它！',
+          cancelButtonText: '取消'
+          }).then((result) => {
+          if (result.value) {
+            document.location.href="index.php?op=addCart&sn="+sn;
+          }
+        })
+      }
+    <?php echo '</script'; ?>
+>
 
   <!-- Portfolio Section -->
   <section id="portfolio">

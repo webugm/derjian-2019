@@ -1,4 +1,5 @@
 <?php
+namespace Verot\Upload;
 /* 引入檔頭，每支程都會引入 */
 require_once 'head.php';
  
@@ -100,59 +101,120 @@ function op_insert($sn=""){
 
   }
 
-  if($_FILES['prod']['name']){
-    $kind = "prod";
-    #刪除舊圖
-    # 1.刪除實體檔案
-    # 2.刪除files資料表
+  #上傳圖片
+  include_once _WEB_PATH."/class/upload/class.upload.php";//引入物件檔，路徑請自行修改
+  $kind = "prod";
+  $max_width = 1280;
+  $img_handle = new Upload($_FILES[$kind],"zh_TW"); //將上傳物件實體化
+  if ($img_handle->uploaded) {                      //假如檔案已經上傳到tmp
+    #判斷是否已經有舊檔存在 ,若存在，刪除該檔案
+    $sub_dir = "/".$kind;
+    $sort = 1;
     delFilesByKindColsnSort($kind,$sn,1);
-     
-    if ($_FILES['prod']['error'] === UPLOAD_ERR_OK){
-        
-        $sub_dir = "/".$kind;
-        $sort = 1;
-        #過濾變數
-        $_FILES['prod']['name'] = db_filter($_FILES['prod']['name'], '');
-        $_FILES['prod']['type'] = db_filter($_FILES['prod']['type'], '');
-        $_FILES['prod']['size'] = db_filter($_FILES['prod']['size'], '');
-        #檢查資料目錄
-        mk_dir(_WEB_PATH . "/uploads");
-        mk_dir(_WEB_PATH . "/uploads" . $sub_dir);
-        $path = _WEB_PATH . "/uploads" . $sub_dir . "/";
-        #圖片名稱
-        $rand = substr(md5(uniqid(mt_rand(), 1)), 0, 5);//取得一個5碼亂數
-        
-        #//取得上傳檔案的副檔名
-        $ext = pathinfo($_FILES["prod"]["name"], PATHINFO_EXTENSION); 
-        $ext = strtolower($ext);//轉小寫
-        
-        //判斷檔案種類
-        if ($ext == "jpg" or $ext == "jpeg" or $ext == "png" or $ext == "gif") {
-            $file_kind = "img";
-        } else {
-            $file_kind = "file";
-        }     
 
-        $file_name = $rand . "_" . $sn . "." . $ext; 
-        #圖片目錄
+    #檢查資料目錄
+    mk_dir(_WEB_PATH . "/uploads");
+    mk_dir(_WEB_PATH . "/uploads" . $sub_dir);
+    $path = _WEB_PATH . "/uploads" . $sub_dir . "/";
+    
+    #過濾變數
+    $_FILES[$kind]['name'] = db_filter($_FILES[$kind]['name'], '');
+    $_FILES[$kind]['type'] = db_filter($_FILES[$kind]['type'], '');
+    $_FILES[$kind]['size'] = db_filter($_FILES[$kind]['size'], '');
+    #圖片名稱
+    $rand = substr(md5(uniqid(mt_rand(), 1)), 0, 5);//取得一個5碼亂數
+    $file_new_name_body = $rand . "_" . $sn;
+    
+    #//取得上傳檔案的副檔名
+    $ext = pathinfo($_FILES[$kind]["name"], PATHINFO_EXTENSION); 
+    $ext = strtolower($ext);//轉小寫
+    
+    //判斷檔案種類
+    if ($ext == "jpg" or $ext == "jpeg" or $ext == "png" or $ext == "gif") {
+      $file_kind = "img";
+    } else {
+      $file_kind = "file";
+    }     
 
-        # 將檔案移至指定位置
-        if(move_uploaded_file($_FILES['prod']['tmp_name'], $path . $file_name)){
-            $sql="INSERT INTO `files` 
-                              (`kind`, `col_sn`, `sort`, `file_kind`, `file_name`, `file_type`, `file_size`, `description`, `counter`, `name`, `download_name`, `sub_dir`) 
-                              VALUES 
-                              ('{$kind}', '{$sn}', '{$sort}', '{$file_kind}', '{$_FILES['prod']['name']}', '{$_FILES['prod']['type']}', '{$_FILES['prod']['size']}', NULL, '0', '{$file_name}', '', '{$sub_dir}')
-            
-            ";
-            $db->query($sql) or die($db->error() . $sql);
-
-        }
-
+    $img_handle->file_safe_name = false;               //會把檔名的空白改為「_」
+    $img_handle->file_overwrite  = true;               //強制覆寫相同檔名
+    $img_handle->file_new_name_body   = $file_new_name_body;    //重新設定新檔名
+    $img_handle->image_convert = 'png';                //轉檔為png格式，方便管理
+    $img_handle->image_resize  = true;                 //要重設圖片大小
+    $img_handle->image_x  = $max_width;                //設定寬度為1280px
+    $img_handle->image_ratio_y  = true;                //按照比例縮放高度
+    $img_handle->process($path);                       //檔案搬移到目的地
+    if ($img_handle->processed) {                      //判斷搬移執行結果
+      $img_handle->clean();                            //若搬移成功，則釋放記憶體
+      $file_name = ($file_kind == "img") ? $file_new_name_body . ".png" : $file_new_name_body . $ext ;
+      $sql="INSERT INTO `files` 
+                        (`kind`, `col_sn`, `sort`, `file_kind`, `file_name`, `file_type`, `file_size`, `description`, `counter`, `name`, `download_name`, `sub_dir`) 
+                        VALUES 
+                        ('{$kind}', '{$sn}', '{$sort}', '{$file_kind}', '{$_FILES[$kind]['name']}', '{$_FILES[$kind]['type']}', '{$_FILES[$kind]['size']}', NULL, '0', '{$file_name}', '', '{$sub_dir}')
+      
+      ";
+      $db->query($sql) or die($db->error() . $sql);
 
     } else {
-        die("圖片上傳失敗");
+      die($img_handle->error);                         //秀出錯誤訊息。
     }
   }
+
+  /*
+    if($_FILES['prod']['name']){
+      $kind = "prod";
+      #刪除舊圖
+      # 1.刪除實體檔案
+      # 2.刪除files資料表
+      delFilesByKindColsnSort($kind,$sn,1);
+      
+      if ($_FILES['prod']['error'] === UPLOAD_ERR_OK){
+          
+          $sub_dir = "/".$kind;
+          $sort = 1;
+          #過濾變數
+          $_FILES['prod']['name'] = db_filter($_FILES['prod']['name'], '');
+          $_FILES['prod']['type'] = db_filter($_FILES['prod']['type'], '');
+          $_FILES['prod']['size'] = db_filter($_FILES['prod']['size'], '');
+          #檢查資料目錄
+          mk_dir(_WEB_PATH . "/uploads");
+          mk_dir(_WEB_PATH . "/uploads" . $sub_dir);
+          $path = _WEB_PATH . "/uploads" . $sub_dir . "/";
+          #圖片名稱
+          $rand = substr(md5(uniqid(mt_rand(), 1)), 0, 5);//取得一個5碼亂數
+          
+          #//取得上傳檔案的副檔名
+          $ext = pathinfo($_FILES["prod"]["name"], PATHINFO_EXTENSION); 
+          $ext = strtolower($ext);//轉小寫
+          
+          //判斷檔案種類
+          if ($ext == "jpg" or $ext == "jpeg" or $ext == "png" or $ext == "gif") {
+              $file_kind = "img";
+          } else {
+              $file_kind = "file";
+          }     
+
+          $file_name = $rand . "_" . $sn . "." . $ext; 
+          #圖片目錄
+
+          # 將檔案移至指定位置
+          if(move_uploaded_file($_FILES['prod']['tmp_name'], $path . $file_name)){
+              $sql="INSERT INTO `files` 
+                                (`kind`, `col_sn`, `sort`, `file_kind`, `file_name`, `file_type`, `file_size`, `description`, `counter`, `name`, `download_name`, `sub_dir`) 
+                                VALUES 
+                                ('{$kind}', '{$sn}', '{$sort}', '{$file_kind}', '{$_FILES['prod']['name']}', '{$_FILES['prod']['type']}', '{$_FILES['prod']['size']}', NULL, '0', '{$file_name}', '', '{$sub_dir}')
+              
+              ";
+              $db->query($sql) or die($db->error() . $sql);
+
+          }
+
+
+      } else {
+          die("圖片上傳失敗");
+      }
+    }  
+  */
 
   return $msg;
 
@@ -245,6 +307,15 @@ function op_list(){
   $sql = "SELECT *
           FROM `prods`
   ";//die($sql);
+
+  #---分頁套件(原始$sql 不要設 limit)
+  include_once _WEB_PATH."/class/PageBar/PageBar.php";
+  $PageBar = getPageBar($db, $sql, 10, 10);
+  $bar     = $PageBar['bar'];
+  $sql     = $PageBar['sql'];
+  $total   = $PageBar['total'];
+  $smarty->assign("bar",$bar);  
+  #---分頁套件(end)
 
   $result = $db->query($sql) or die($db->error() . $sql);
   $rows=[];//array();

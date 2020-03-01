@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-28 14:53:44
+/* Smarty version 3.1.34-dev-7, created on 2020-03-02 02:38:02
   from 'D:\0_course\xampp\xampp\htdocs\web11\templates\tpl\head.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e58b8f88d3160_74793245',
+  'unifunc' => 'content_5e5c010a287ba9_98118862',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fa2ea6b80ba8f2d5c998fbbe46b947e921001266' => 
     array (
       0 => 'D:\\0_course\\xampp\\xampp\\htdocs\\web11\\templates\\tpl\\head.tpl',
-      1 => 1582872818,
+      1 => 1583087876,
       2 => 'file',
     ),
   ),
@@ -20,8 +20,19 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e58b8f88d3160_74793245 (Smarty_Internal_Template $_smarty_tpl) {
-?>
+function content_5e5c010a287ba9_98118862 (Smarty_Internal_Template $_smarty_tpl) {
+?>  <style>
+    #navbarResponsive .nav-link{
+      position: relative;
+    }
+    #navbarResponsive .badge-counter {
+      position: absolute;
+      transform: scale(.7);
+      transform-origin: top right;
+      right: .25rem;
+      margin-top: -.25rem;
+    }
+  </style>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav" >
     <div class="container">
@@ -46,6 +57,18 @@ foreach ($_from as $_smarty_tpl->tpl_vars['mainMenu']->value) {
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+          <?php if ($_SESSION['cart']) {?>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#" >
+                <i class="fas fa-cart-plus"></i>
+                <span class="badge badge-danger badge-counter">
+                  <?php echo count($_SESSION['cart']);?>
+
+                </span>
+              </a>
+            </li>
+          <?php }?>
+          
 
           <?php if ($_SESSION['user']['kind'] === 1) {?>
                         <li class="nav-item">

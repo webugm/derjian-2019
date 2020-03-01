@@ -1,4 +1,15 @@
-
+  <style>
+    #navbarResponsive .nav-link{
+      position: relative;
+    }
+    #navbarResponsive .badge-counter {
+      position: absolute;
+      transform: scale(.7);
+      transform-origin: top right;
+      right: .25rem;
+      margin-top: -.25rem;
+    }
+  </style>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav" >
     <div class="container">
@@ -13,6 +24,17 @@
               <a class="nav-link js-scroll-trigger" href="<{$mainMenu.url}>" <{if $mainMenu.target}> target="_blank"<{/if}> ><{$mainMenu.title}></a>
             </li>
           <{/foreach}>
+          <{if $smarty.session.cart}>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#" >
+                <i class="fas fa-cart-plus"></i>
+                <span class="badge badge-danger badge-counter">
+                  <{$smarty.session.cart|@count}>
+                </span>
+              </a>
+            </li>
+          <{/if}>
+          
 
           <{if $smarty.session.user.kind === 1}>
             <{* 管理員   *}>

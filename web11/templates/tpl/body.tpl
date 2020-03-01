@@ -63,43 +63,58 @@
     </div>
   </section>
 
-  <!-- Services Section -->
+  <!-- prod list -->
   <section class="page-section" id="services">
     <div class="container">
-      <h2 class="text-center mt-0">At Your Service</h2>
+      <h2 class="text-center mt-0">點餐</h2>
       <hr class="divider my-4">
       <div class="row">
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="mt-5">
-            <i class="fas fa-4x fa-gem text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Sturdy Themes</h3>
-            <p class="text-muted mb-0">Our themes are updated regularly to keep them bug free!</p>
+        
+        <{foreach $rows as $row}>
+            
+          <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card h-100">
+              <a href="#">
+                <img class="card-img-top" src="<{$row.prod}>" alt="<{$row.title}>">
+              </a>
+              <div class="card-body text-center">
+                <h4 class="card-title">
+                  <a href="#"><{$row.title}>：<{$row.price}>元</a>
+                </h4>
+                
+                <a href="javascript:void(0)" onclick="addCart(<{$row.sn}>);">加入購物車</a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="mt-5">
-            <i class="fas fa-4x fa-laptop-code text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Up to Date</h3>
-            <p class="text-muted mb-0">All dependencies are kept current to keep things fresh.</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="mt-5">
-            <i class="fas fa-4x fa-globe text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Ready to Publish</h3>
-            <p class="text-muted mb-0">You can use this design as is, or you can make changes!</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 text-center">
-          <div class="mt-5">
-            <i class="fas fa-4x fa-heart text-primary mb-4"></i>
-            <h3 class="h4 mb-2">Made with Love</h3>
-            <p class="text-muted mb-0">Is it really open source if it's not made with love?</p>
-          </div>
-        </div>
+        <{foreachelse}>
+        <{/foreach}>
+      
+
       </div>
     </div>
   </section>
+  
+    <!-- sweetalert2 -->
+    <link rel="stylesheet" href="<{$xoAppUrl}>class/sweetalert2/sweetalert2.min.css">
+    <script src="<{$xoAppUrl}>class/sweetalert2/sweetalert2.min.js"></script>
+    <script>
+      function addCart(sn){
+        Swal.fire({
+          title: '你確定嗎？',
+          text: "您將無法還原！",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: '是的，刪除它！',
+          cancelButtonText: '取消'
+          }).then((result) => {
+          if (result.value) {
+            document.location.href="index.php?op=addCart&sn="+sn;
+          }
+        })
+      }
+    </script>
 
   <!-- Portfolio Section -->
   <section id="portfolio">
