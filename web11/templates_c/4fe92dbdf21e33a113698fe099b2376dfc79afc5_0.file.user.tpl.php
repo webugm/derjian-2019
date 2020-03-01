@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-24 02:43:24
+/* Smarty version 3.1.34-dev-7, created on 2020-02-28 09:06:13
   from 'D:\0_course\xampp\xampp\htdocs\web11\templates\tpl\user.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e532a3cdc90c1_63728171',
+  'unifunc' => 'content_5e5867857f11e5_36995297',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4fe92dbdf21e33a113698fe099b2376dfc79afc5' => 
     array (
       0 => 'D:\\0_course\\xampp\\xampp\\htdocs\\web11\\templates\\tpl\\user.tpl',
-      1 => 1582145637,
+      1 => 1582797758,
       2 => 'file',
     ),
   ),
@@ -20,81 +20,82 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e532a3cdc90c1_63728171 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e5867857f11e5_36995297 (Smarty_Internal_Template $_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['op']->value == "op_list") {?>
-	<table class="table table-striped table-bordered table-hover table-sm">
-		<thead>
-			<tr>
-				<th scope="col">帳號</th>
-				<th scope="col">姓名</th>
-				<th scope="col">電話</th>
-				<th scope="col">EMAIL</th>
-				<th scope="col">狀態</th>
-				<th scope="col">功能</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php
+    <table class="table table-striped table-bordered table-hover table-sm">
+        <thead>
+        <tr>
+            <th scope="col">帳號</th>
+            <th scope="col">姓名</th>
+            <th scope="col">電話</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">狀態</th>
+            <th scope="col">功能</th>
+        </tr>
+        </thead>
+        <tbody>
+            <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['rows']->value, 'row');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['row']->value) {
 ?>
-				<tr>
-					<td><?php echo $_smarty_tpl->tpl_vars['row']->value['uname'];?>
+                <tr>
+                    <td><?php echo $_smarty_tpl->tpl_vars['row']->value['uname'];?>
 </td>
-					<td><?php echo $_smarty_tpl->tpl_vars['row']->value['name'];?>
+                    <td><?php echo $_smarty_tpl->tpl_vars['row']->value['name'];?>
 </td>
-					<td><?php echo $_smarty_tpl->tpl_vars['row']->value['tel'];?>
+                    <td><?php echo $_smarty_tpl->tpl_vars['row']->value['tel'];?>
 </td>
-					<td><?php echo $_smarty_tpl->tpl_vars['row']->value['email'];?>
+                    <td><?php echo $_smarty_tpl->tpl_vars['row']->value['email'];?>
 </td>
-					<td><?php if ($_smarty_tpl->tpl_vars['row']->value['kind']) {?><i class="fas fa-user-check"></i><?php }?></td>
-					<td>
-						<a href="user.php?op=op_form&uid=<?php echo $_smarty_tpl->tpl_vars['row']->value['uid'];?>
+                    <td><?php if ($_smarty_tpl->tpl_vars['row']->value['kind']) {?><i class="fas fa-user-check"></i><?php }?></td>
+                    <td>
+                        <a href="user.php?op=op_form&uid=<?php echo $_smarty_tpl->tpl_vars['row']->value['uid'];?>
 "><i class="far fa-edit"></i></a>
-						<a href="javascript:void(0)" onclick="op_delete(<?php echo $_smarty_tpl->tpl_vars['row']->value['uid'];?>
+                        <a href="javascript:void(0)" onclick="op_delete(<?php echo $_smarty_tpl->tpl_vars['row']->value['uid'];?>
 );"><i class="far fa-trash-alt"></i></a>
-					</td>
-				</tr>
-			<?php
+                    </td>
+                </tr>
+            <?php
 }
 } else {
 ?>
-				<tr>
-					<td colspan=6>目前沒有資料</td>
-				</tr>
-			<?php
+                <tr>
+                    <td colspan=6>目前沒有資料</td>
+                </tr>
+            <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-		</tbody>
-	</table>
-	
-	<!-- sweetalert2 -->
-	<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['xoAppUrl']->value;?>
+
+        </tbody>
+    </table>
+    
+    <!-- sweetalert2 -->
+    <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['xoAppUrl']->value;?>
 class/sweetalert2/sweetalert2.min.css">
-	<?php echo '<script'; ?>
+    <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['xoAppUrl']->value;?>
 class/sweetalert2/sweetalert2.min.js"><?php echo '</script'; ?>
 >
-	<?php echo '<script'; ?>
->        
-		function op_delete(uid){
-			Swal.fire({
-				title: '你確定嗎？',
-				text: "您將無法還原！",
-				icon: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: '是的，刪除它！'
-			}).then((result) => {
-				if (result.value) {
-					//確定要刪除的動作
-					document.location.href="user.php?op=op_delete&uid="+uid;
-				}
-			})
-		}        
-	<?php echo '</script'; ?>
+    <?php echo '<script'; ?>
+>
+        function op_delete(uid){
+            Swal.fire({
+                title: '你確定嗎？',
+                text: "您將無法還原！",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '是的，刪除它！',
+                cancelButtonText: '取消'
+                }).then((result) => {
+                if (result.value) {
+                    document.location.href="user.php?op=op_delete&uid="+uid;
+                }
+            })
+        }
+    <?php echo '</script'; ?>
 >
 <?php }?>
 
@@ -179,42 +180,46 @@ class/sweetalert2/sweetalert2.min.js"><?php echo '</script'; ?>
         <?php echo '<script'; ?>
 >
             $(function(){
-                $("#myForm").validate({
-                    submitHandler: function(form) {
-                        form.submit();
-                    },
-                    rules: {
-                        'uname' : {
-                            required: true
-                        },
-                        'name' : {
-                            required: true
-                        },
-                        'tel' : {
-                            required: true
-                        },
-                        'email' : {
-                            required: true,
-                            email:true
-                        }
-                    },
-                    messages: {
-                        'uname' : {
-                            required: "必填"
-                        },
-                        'name' : {
-                            required: "必填"
-                        },
-                        'tel' : {
-                            required: "必填"
-                        },
-                        'email' : {
-                            required: "必填",
-                            email: "請填正確email"
-                        }
 
+            });
+            $(function(){
+            $("#myForm").validate({
+                submitHandler: function(form) {
+                    form.submit();
+                },
+                rules: {
+                    'uname' : {
+                        required: true
+                    },
+                    'name' : {
+                        required: true
+                    },
+                    'tel' : {
+                        required: true
+                    },
+                    'email' : {
+                        required: true,
+                        email:true
                     }
-                });
+                },
+                messages: {
+                    'uname' : {
+                        required: "必填"
+                    },
+                    'name' : {
+                        required: "必填"
+                    },
+                    'tel' : {
+                        required: "必填"
+                    },
+                    'email' : {
+                        required: "必填",
+                        email: "請填正確email"
+                    }
+
+                }
+            });
+
             });
         <?php echo '</script'; ?>
 >

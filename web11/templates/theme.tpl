@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Creative - Start Bootstrap Theme</title>
+  <title><{$WEB.web_title}></title>
 
   <!-- Font Awesome Icons -->
   <link href="<{$xoImgUrl}>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -21,7 +21,7 @@
   <link href="<{$xoImgUrl}>vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
   <!-- Theme CSS - Includes Bootstrap -->
-  <link href="<{$xoImgUrl}>css/creative.min.css" rel="stylesheet">
+  <link href="<{$xoImgUrl}>css/creative.css" rel="stylesheet">
   
   <{* head_js.tpl *}>
   <{include file="tpl/head_js.tpl"}>
@@ -34,8 +34,7 @@
   <{* head.tpl *}>
   <{include file="tpl/head.tpl"}>
   
-  <{if $op == "contact_form"}>
-    
+  <{if $op == "contact_form"}>    
     <{include file="tpl/contact_form.tpl"}>
   <{elseif  $op == "ok"}> 
     <{include file="tpl/ok.tpl"}>
@@ -53,7 +52,9 @@
   <{* footer.tpl *}>
   <{include file="tpl/footer.tpl"}>
 
-
+  
+  <!-- Custom scripts for this template -->
+  <script src="<{$xoImgUrl}>js/creative.min.js"></script>
 </body>
 
 </html>

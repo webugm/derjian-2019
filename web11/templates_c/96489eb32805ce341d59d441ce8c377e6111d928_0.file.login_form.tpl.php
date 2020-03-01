@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-02-19 21:20:57
+/* Smarty version 3.1.34-dev-7, created on 2020-02-28 10:03:13
   from 'D:\0_course\xampp\xampp\htdocs\web11\templates\tpl\login_form.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5e4d98a9a8e1a2_44022928',
+  'unifunc' => 'content_5e5874e11b8701_57269089',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '96489eb32805ce341d59d441ce8c377e6111d928' => 
     array (
       0 => 'D:\\0_course\\xampp\\xampp\\htdocs\\web11\\templates\\tpl\\login_form.tpl',
-      1 => 1582143621,
+      1 => 1582797758,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5e4d98a9a8e1a2_44022928 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5e5874e11b8701_57269089 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 		<style>
 			.form-signin {

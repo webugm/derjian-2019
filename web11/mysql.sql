@@ -1,4 +1,4 @@
--- 會員
+-- 會員資料表
 CREATE TABLE `users` (
   `uid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '會員編號',
   `uname` varchar(255) NOT NULL COMMENT '帳號',
@@ -11,7 +11,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='會員資料表';
 
--- 商品
+-- 商品資料表
 CREATE TABLE `prods` (
     `sn` int(10) unsigned NOT NULL auto_increment COMMENT 'prods_sn',
     `kind_sn` smallint(5) unsigned NOT NULL default 0 COMMENT '分類',
@@ -25,7 +25,7 @@ CREATE TABLE `prods` (
     PRIMARY KEY  (`sn`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='商品資料表';
 
--- 類別
+-- 類別資料表
 CREATE TABLE `kinds` (
     `sn` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT 'kinds_sn',
     `ofsn` smallint(5) unsigned NOT NULL DEFAULT 0 COMMENT '父類別',
@@ -40,7 +40,7 @@ CREATE TABLE `kinds` (
     PRIMARY KEY (`sn`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='類別資料表';
 
--- 上傳檔案
+-- 上傳檔案資料表
 CREATE TABLE `files` (
     `sn` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT 'files_sn',
     `kind` varchar(255) NOT NULL DEFAULT '' COMMENT '分類',

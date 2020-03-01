@@ -1,6 +1,18 @@
-
-    <div class="container mt-5" style="margin-top: 100px!important;>
-        <h1 class="text-center">聯絡我們</h1>
+   
+    
+    <div class="container mt-5 mb-3" style="margin-top: 100px!important;">        
+        <h1 class="text-center">聯絡我們</h1> 
+        <div class="row  mb-5">
+            <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+            <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+            <div>0921-560421</div>
+            </div>
+            <div class="col-lg-4 mr-auto text-center">
+            <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+            <!-- Make sure to change the email address in anchor text AND the link below! -->
+            <a class="d-block" href="mailto:tawan158@gmail.com">tawan158@gmail.com</a>
+            </div>
+        </div>
 			
         <!-- 表單返回頁，記得在表單加「 target='returnWin' 」 -->
         <iframe name="returnWin" style="display: none;" onload="this.onload=function(){window.location='index.php?op=ok'}"></iframe>
@@ -45,6 +57,7 @@
                 <button type="submit" class="btn btn-primary">送出</button>
             </div>
         </form>
+       
     </div>
     
     <!-- 表單驗證 -->

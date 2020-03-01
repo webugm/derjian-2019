@@ -20,6 +20,21 @@ define('_WEB_URL', $http . $_SERVER["HTTP_HOST"] . str_replace($_SERVER["DOCUMEN
 #--------- WEB -----
 #程式檔名(含副檔名)
 $WEB['file_name'] = basename($_SERVER['PHP_SELF']); //index.php
+if($WEB['file_name'] == "index.php"){
+  $WEB['web_title'] = "育將電腦工作室";
+}elseif($WEB['file_name'] == "user.php"){
+  $WEB['web_title'] = "會員管理";
+}elseif($WEB['file_name'] == "prod.php"){
+  $WEB['web_title'] = "商品管理";
+}elseif($WEB['file_name'] == "kind.php"){
+  $WEB['web_title'] = "類別管理";
+}elseif($WEB['file_name'] == "menu.php"){
+  $WEB['web_title'] = "選單管理";
+}elseif($WEB['file_name'] == "slide.php"){
+  $WEB['web_title'] = "輪播圖管理";
+}else{
+  $WEB['web_title'] = "";//
+}
 //basename(__FILE__)head.php
 #--------- WEB END -----
  
@@ -72,16 +87,5 @@ if($_SESSION['user']['kind'] === ""){
   }
  
 }
-
-#轉向用
-$_SESSION['redirect'] = isset($_SESSION['redirect']) ? $_SESSION['redirect'] : "";
-$_SESSION['message'] = isset($_SESSION['message']) ? $_SESSION['message'] : "";
-$_SESSION['time'] = isset($_SESSION['time']) ? $_SESSION['time'] : "";
-
-$smarty->assign("redirect",$_SESSION['redirect']);  //<{$redirect}>
-$smarty->assign("message",$_SESSION['message']);  
-$smarty->assign("time",$_SESSION['time']); 
-
-$_SESSION['redirect'] = "";
-$_SESSION['message'] = "";
-$_SESSION['time'] = "";
+#轉向
+redirect_session();

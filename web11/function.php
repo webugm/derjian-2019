@@ -27,14 +27,6 @@ function system_CleanVars(&$global, $key, $default = '', $type = 'int')
 }
  
  
-// ###############################################################################
-// #  轉向函數
-// ###############################################################################
-// function redirect_header($url = "", $time = 3000, $message = '已轉向！！') {
-//   $_SESSION['redirect'] = "\$.jGrowl('{$message}', {  life:{$time} , position: 'center', speed: 'slow' });";
-//   header("location:{$url}");
-//   exit;
-// }
 ###############################################################################
 #  取得目前網址
 ###############################################################################
@@ -116,4 +108,93 @@ function redirect_header($url = "index.php", $message = '訊息', $time = 3000) 
   $_SESSION['time'] = $time;
   header("location:{$url}");//注意前面不可以有輸出
   exit;
+}
+
+/*############################################
+  轉向session
+############################################*/
+function redirect_session(){
+  global $smarty;
+  
+  $_SESSION['redirect'] = isset($_SESSION['redirect']) ? $_SESSION['redirect'] : "";
+  $_SESSION['message'] = isset($_SESSION['message']) ? $_SESSION['message'] : "";
+  $_SESSION['time'] = isset($_SESSION['time']) ? $_SESSION['time'] : "";
+
+  $smarty->assign("redirect",$_SESSION['redirect']);  //<{$redirect}>
+  $smarty->assign("message",$_SESSION['message']);  
+  $smarty->assign("time",$_SESSION['time']); 
+
+  $_SESSION['redirect'] = "";
+  $_SESSION['message'] = "";
+  $_SESSION['time'] = "";
+}
+
+/*############################################
+  用關鍵字取得某類 kinds 資料
+############################################*/
+function getMenusByKind($kind,$pic = false){
+  global $db;
+  
+  $sql = "SELECT *
+          FROM `kinds`
+          WHERE `kind`='{$kind}' and `enable`='1'
+          order by `sort`
+  ";//die($sql);
+
+  $result = $db->query($sql) or die($db->error() . $sql);
+  $rows=[];//array();
+  while($row = $result->fetch_assoc()){ 
+    $row['sn'] = (int)$row['sn'];//分類
+    $row['title'] = htmlspecialchars($row['title']);//標題
+    $row['enable'] = (int)$row['enable'];//狀態 
+    $row['url'] = htmlspecialchars($row['url']);//網址
+    $row['target'] = (int)$row['target'];//外連 
+    $row['content'] = htmlspecialchars($row['content']);//內容
+    if($pic){       
+      $row['pic'] = getFilesByKindColsnSort($kind,$row['sn']);
+    }
+    $rows[] = $row;
+  }
+
+  return $rows;
+}
+
+/*========================================
+  用kind col_sn sort 取得圖片資料
+========================================*/ 
+function getFilesByKindColsnSort($kind,$col_sn,$sort=1,$url=true){
+  global $db; 
+  $sql="SELECT  *
+                FROM `files`
+                WHERE `kind` = '{$kind}' AND `col_sn` = '{$col_sn}' AND `sort` = '{$sort}'
+  ";//ddie($sql);     
+  $result = $db->query($sql) or die($db->error() . $sql);
+  $row = $result->fetch_assoc();
+  $file_name = "";
+  if($row){
+    if($url){
+      $file_name = _WEB_URL . "/uploads" . $row['sub_dir'] . "/" . $row['name'];
+    }else{
+      $file_name = _WEB_PATH . "/uploads" . $row['sub_dir'] . "/" . $row['name'];
+    }
+  }
+  return $file_name;
+}
+/*==========================
+  用$kind,$col_sn,$sort
+  刪除 圖片資料
+==========================*/
+function delFilesByKindColsnSort($kind,$col_sn,$sort){
+  global $db;		
+  # 1.刪除實體檔案
+  $file_name = getFilesByKindColsnSort($kind,$col_sn,$sort,false);
+  if($file_name){
+    unlink($file_name);
+  }
+  # 2.刪除files資料表	
+  $sql="DELETE FROM `files`
+        WHERE `kind` = '{$kind}' AND `col_sn` = '{$col_sn}' AND `sort` = '{$sort}'
+  ";
+  $db->query($sql) or die($db->error() . $sql);	
+  return;	 
 }

@@ -47,6 +47,10 @@ switch ($op){
     break;  
 }
   /*---- 將變數送至樣版----*/
+  #主選單
+  $smarty->assign("mainMenus",getMenusByKind("mainMenu"));
+  #輪播圖
+  $smarty->assign("mainSlides",getMenusByKind("mainSlide",true));
   $smarty->assign("WEB", $WEB);
   $smarty->assign("op", $op);
    

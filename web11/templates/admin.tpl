@@ -10,7 +10,7 @@
     <!-- Font Awesome Icons -->
     <link href="<{$xoImgUrl}>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
-    <title>會員管理</title>
+    <title><{$WEB.web_title}></title>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="<{$xoImgUrl}>bootstrap/jquery-3.4.1.min.js"></script>
@@ -21,7 +21,7 @@
     <{* 轉向樣板 *}>
     <{include file="tpl/redirect.tpl"}>
 
-    <h1 class="text-center mt-2">育將電腦工作室 後台</h1>
+    <h1 class="text-center mt-2"><{$WEB.web_title}></h1>
     <div class="container">
       <div class="row">
         <div class="col-sm-9">
@@ -29,6 +29,12 @@
             <{include file="tpl/user.tpl"}>
           <{elseif  $WEB.file_name == "prod.php"}>
             <{include file="tpl/prod.tpl"}>
+          <{elseif  $WEB.file_name == "kind.php"}>
+            <{include file="tpl/kind.tpl"}>  
+          <{elseif  $WEB.file_name == "menu.php"}>
+            <{include file="tpl/menu.tpl"}>     
+          <{elseif  $WEB.file_name == "slide.php"}>
+            <{include file="tpl/slide.tpl"}>   
           <{/if}>
           
 
@@ -51,6 +57,15 @@
               </li>
               <li class="list-group-item">
                 <a href="prod.php" class="btn-block">商品管理</a>
+              </li>
+              <li class="list-group-item">
+                <a href="kind.php" class="btn-block">類別管理</a>
+              </li>
+              <li class="list-group-item">
+                <a href="menu.php" class="btn-block">選單管理</a>
+              </li>
+              <li class="list-group-item">
+                <a href="slide.php" class="btn-block">輪播圖管理</a>
               </li>
               <li class="list-group-item">
                 <a href="http://localhost/adminer/adminer.php" class="btn-block" target="_blank">資料庫管理</a>
